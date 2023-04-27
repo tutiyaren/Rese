@@ -1,0 +1,21 @@
+.header {
+    max-width: 1500px;
+    width: 100%;
+}
+.header-top {
+    display: flex;
+    justify-content: space-between;
+}
+.header-left {
+    margin-left: 6%;
+}
+.footer {
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+}
+.end {
+    font-weight: bold;
+    font-size: 5px;
+    margin-top: 1%;
+}

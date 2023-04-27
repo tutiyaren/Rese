@@ -1,0 +1,96 @@
+
+.list {
+    display: flex;
+    
+}
+.item {
+    list-style: none;
+    margin-right: 40px;
+    line-height: 3.5;
+    cursor: pointer;
+}
+.item a {
+    text-decoration: none;
+    display: inline-block;
+    color: #000;
+}
+.item a:hover{
+    color: olive;
+}
+.form-button {
+    border: none;
+    background-color: #fff;
+}
+.form-button:hover {
+    color: red;
+}
+
+.main {
+    width: 100%;
+    background-color: rgb(219, 216, 216);
+    padding-bottom: 6%;
+}
+.message {
+    text-align: center;
+}
+.message-inner {
+    padding: 3% 0;
+}
+.cards {
+    display: flex;
+    justify-content: center;
+}
+.card {
+    background-color: #fff;
+    padding: 50px 200px;
+}
+.card:first-child{
+    margin-right: 5%;
+    margin-bottom: 5%;
+}
+.card:last-child {
+    margin-bottom: 5%;
+}
+.inner {
+    font-weight: bold;
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+}
+.inner:hover {
+    color: blue;
+}
+
+
+@media screen and (max-width:1000px) {
+    .card {
+        padding: 40px 150px;
+    }
+}
+@media screen and (max-width:794px) {
+    .message-inner {
+        font-size: 15px;
+    }
+    .card {
+        padding: 30px 100px;
+    }
+    .inner {
+        font-size: 12px;
+    }
+}
+@media screen and (max-width:565px) {
+    .item {
+        margin-right: 10px;
+    }
+    .table-row__th {
+        font-size: 10px;
+    }
+    .card {
+        padding: 24px 75px;
+    }
+}
+@media screen and (max-width:430px) {
+    .card {
+        padding: 18px 54px;
+    }
+}

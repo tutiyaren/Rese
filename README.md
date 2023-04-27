@@ -12,6 +12,6 @@
 
 
 ## ER図
-(https://user-images.githubusercontent.com/126432220/234816816-79738c15-dcad-4d78-9b48-0e8adc27801c.png)
+![スクリーンショット (61)](https://user-images.githubusercontent.com/126432220/234817585-7b0cc91f-db0a-4210-98fa-ef8cd81c108f.png)
 
 

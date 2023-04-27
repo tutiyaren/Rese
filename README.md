@@ -8,8 +8,10 @@
 
 
 ## テーブル設計
-https://github.com/tutiyaren/Atte/issues/2#issue-1686443222
+![スクリーンショット (63)](https://user-images.githubusercontent.com/126432220/234816999-fca9cde7-6d16-4cb3-9fbc-53f967f21932.png)
+
 
 ## ER図
-https://github.com/tutiyaren/Atte/issues/3#issue-1686446504
+(https://user-images.githubusercontent.com/126432220/234816816-79738c15-dcad-4d78-9b48-0e8adc27801c.png)
+
 

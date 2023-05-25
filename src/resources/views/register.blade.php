@@ -40,6 +40,11 @@
         <div class="input">
             <input type="password" class="password" placeholder="確認用パスワード" name="password_confirmation">
         </div>
+        @error('password_confirmation')
+        <div class="error">
+            {{$errors->first('password_confirmation')}}
+        </div>
+        @enderror
         <div class="input form-button">
             <button class="form-button__submit" type="submit">会員登録</button>
         </div>
@@ -48,7 +53,7 @@
 
     <div class="have">
         <p class="have-text">アカウントをお持ちの方はこちらから</p>
-        <a href="" class="have-login">ログイン</a>
+        <a href="{{route('login')}}" class="have-login">ログイン</a>
     </div>
 
 </div>

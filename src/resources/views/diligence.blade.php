@@ -1,7 +1,7 @@
 @extends('layouts.index')
 
 @section('css')
-<link rel="stylesheet" href="{{asset('css/attendance.css')}}">
+<link rel="stylesheet" href="{{asset('css/diligence.css')}}">
 @endsection
 
 @section('nav')
@@ -28,23 +28,30 @@
 @endsection
 
 @section('content')
-
 <div class="main">
 
     <div class="date">
         <div class="date_page">
 
-            {{-- 前の日付へのリンク --}}
-            @if ($prevSlack)
-            <a href="{{ route('log.atten', ['date' => $prevSlack->date]) }}" class="move prev">&lt;</a>
+            {{-- 前の名前へのリンク --}}
+            @if ($previousUser)
+            <a href="{{ route('log.diligence', ['user_id' => $previousUser->user_id]) }}" class="move prev">&lt;</a>
+            @else
+            <a href="{{ route('log.diligence', ['user_id' => $lastUser->id]) }}" class="move prev">&lt;</a>
             @endif
 
-            {{-- 日付の表示 --}}
-            <span class="date_text">{{ $date }}</span>
+            {{-- 名前の表示 --}}
+            @if ($currentUser)
+            <span class="date_page__name">{{ $currentUser->user_name }}</span>
+            @else
+            <span class="date_page__name">{{ $user->name }}</span>
+            @endif
 
-            {{-- 次の日付へのリンク --}}
-            @if ($nextSlack)
-            <a href="{{ route('log.atten', ['date' => $nextSlack->date]) }}" class="move next">&gt;</a>
+            {{-- 次の名前へのリンク --}}
+            @if ($nextUser)
+            <a href="{{ route('log.diligence', ['user_id' => $nextUser->user_id]) }}" class="move next">&gt;</a>
+            @else
+            <a href="{{ route('log.diligence', ['user_id' => $firstUser->id]) }}" class="move next">&gt;</a>
             @endif
 
 
@@ -54,21 +61,19 @@
             <table class="table">
                 {{-- タイトル --}}
                 <tr class="table-row">
-                    <th class="table-row__th">名前</th>
+                    <th class="table-row__th">日付</th>
                     <th class="table-row__th">勤務開始</th>
                     <th class="table-row__th">勤務終了</th>
                     <th class="table-row__th">休憩時間</th>
                     <th class="table-row__th">勤務時間</th>
                 </tr>
                 {{-- 内容 --}}
-                @foreach($slacks as $slack)
+                @foreach($userSlacks as $slack)
                 <tr class="table-row">
                     <form action="/log.slack" method="get" class="table-row__form">
                         @csrf
                         <td class="table-row__item">
-                            @if(Auth::check())
-                            <p class="table-row__item-1">{{$slack->user_name}}</p>
-                            @endif
+                            <p class="table-row__item-1">{{$slack->date}}</p>
                         </td>
                         <td class="table-row__item">
                             <p class="table-row__item-2">{{\Carbon\Carbon::parse($slack->start_time)->format('H:i:s')}}</p>
@@ -81,7 +86,6 @@
                         </td>
                         <td class="table-row__item">
                             <p class="table-row__item-5">{{$slack->work_time }}</p>
-
                         </td>
                     </form>
                 </tr>
@@ -93,9 +97,11 @@
     {{-- ぺージネーション２ --}}
     <div class="page">
         <span class="page_count">
-            {{ $slacks->appends(['date' => $date])->links('pagination::custom') }}
+            {{ $userSlacks->appends(['user_id' => $currentUserId])->links('pagination::custom') }}
         </span>
     </div>
+
 </div>
+
 
 @endsection

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSlackTable extends Migration
+class CreateSlacksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateSlackTable extends Migration
      */
     public function up()
     {
-        Schema::create('slack', function (Blueprint $table) {
+        Schema::create('slacks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('users_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->date('date')->default(now());
-            $table->time('start_time');
-            $table->time('end_time');
-            $table->integer('break_time')->default(0);
-            $table->integer('working')->default(0);
+            $table->datetime('start_time')->default(now());
+            $table->datetime('end_time')->nullable();
+            $table->time('time_work')->nullable();
             $table->timestamp('created_at')->useCurrent()->nullable();
             $table->timestamp('updated_at')->useCurrent()->nullable();
         });
@@ -33,6 +32,6 @@ class CreateSlackTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('slack');
+        Schema::dropIfExists('slacks');
     }
 }

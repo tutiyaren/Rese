@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="{{asset('css/index.css')}}">
     @yield('css')
 </head>
+
 <body>
     <header class="header">
         <div class="header-top">
@@ -27,4 +29,5 @@
         <p class="end">Atte,inc.</p>
     </footer>
 </body>
+
 </html>

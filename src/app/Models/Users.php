@@ -15,5 +15,7 @@ class Users extends Model
         'password'
     ];
 
+    protected $table = 'users';
+
     
 }

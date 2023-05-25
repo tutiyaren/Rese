@@ -37,7 +37,7 @@
 
     <div class="have">
         <p class="have-text">アカウントをお持ちでない方はこちらから</p>
-        <a href="" class="have-not-login">会員登録</a>
+        <a href="{{route('register')}}" class="have-not-login">会員登録</a>
     </div>
 
 </div>

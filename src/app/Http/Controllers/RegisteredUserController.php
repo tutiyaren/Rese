@@ -17,6 +17,6 @@ class RegisteredUserController extends Controller
     {
         $user = $request->all();
         Users::create($user);
-        redirect('/');
+        redirect('/register');
     }
 }

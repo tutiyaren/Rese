@@ -14,8 +14,12 @@
     display: inline-block;
     color: #000;
 }
-.item a:hover{
-    color: olive;
+.lists .list .item.active a {
+    color: rgb(114, 176, 201);
+}
+
+.item a:hover {
+    color: #eb8f8f;
 }
 .form-button {
     border: none;
@@ -62,9 +66,20 @@
 }
 
 
+
 @media screen and (max-width:1000px) {
     .card {
         padding: 40px 150px;
+    }
+}
+@media screen and (max-width:700px) {
+    .item {
+        font-size: 13px;
+        margin-right: 20px;
+        line-height: 4.5;
+    }
+    .form-button {
+        font-size: 13px;
     }
 }
 @media screen and (max-width:794px) {
@@ -87,6 +102,16 @@
     }
     .card {
         padding: 24px 75px;
+    }
+}
+@media screen and (max-width:500px) {
+    .item {
+        font-size: 10px;
+        margin-right: 10px;
+        line-height: 5.5;
+    }
+    .form-button {
+        font-size: 10px;
     }
 }
 @media screen and (max-width:430px) {

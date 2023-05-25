@@ -1,18 +1,32 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthenticatedSessionController;
-use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SlackController;
+use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\UsersController;
+use App\Http\Controllers\DiligenceController;
+use Illuminate\Support\Facades\Artisan;
 
 Route::group(['prefix' => '/', 'as' =>'log'], function() {
     Route::middleware('auth')->group(function () {
+
+        //ホーム
         Route::get('', [SlackController::class, 'work'])->name('.eng');
-        Route::post('', [SlackController::class, 'work_time']);
-        Route::post('', [SlackController::class, 'work_start'])->name('.start');
-        Route::post('', [SlackController::class, 'work_end'])->name('.end');
-        Route::get('attendance', [SlackController::class, 'data'])->name('.atten');
-        Route::post('attendance', [SlackController::class, 'data_time']);
+                
+        Route::post('start', [SlackController::class, 'work_start'])->name('.start');
+        Route::post('end', [SlackController::class, 'work_end'])->name('.end');
+
+        Route::post('start_rest', [SlackController::class, 'start_rest'])->name('.start_rest');
+        Route::post('end_rest', [SlackController::class, 'end_rest'])->name('.end_rest');
+
+        //日付一覧
+        Route::match(['get', 'post'], 'attendance', [AttendanceController::class, 'data'])->name('.atten');
+
+        //ユーザーごとの勤怠表
+        Route::match(['get', 'post'], 'diligence', [DiligenceController::class, 'diligence'])->name('.diligence');
+
+        //ユーザー一覧ページ
+        Route::match(['get', 'post'], 'users', [UsersController::class, 'users'])->name('.users');
     });
 });
 

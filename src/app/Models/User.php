@@ -17,11 +17,34 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    use HasFactory;
+
     protected $fillable = [
         'name',
         'email',
         'password',
+        'user_name'
     ];
+
+    public function slacks()
+    {
+        return $this->hasMany(Slack::class);
+    }
+    public function rests()
+    {
+        return $this->hasMany(Rest::class);
+    }
+
+    public function scopeKeywordSearch($query, $keyword)
+    {
+        if(!empty($keyword)){
+            return $query->where('name', 'like', '%' . $keyword . '%');
+        }
+        return $query;
+    }
+
+
+    protected $table = 'users';
 
     /**
      * The attributes that should be hidden for serialization.

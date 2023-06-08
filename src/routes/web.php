@@ -20,13 +20,13 @@ Route::group(['prefix' => '/', 'as' =>'log'], function() {
         Route::post('end_rest', [SlackController::class, 'end_rest'])->name('.end_rest');
 
         //日付一覧
-        Route::match(['get', 'post'], 'attendance', [AttendanceController::class, 'data'])->name('.atten');
+        Route::get('attendance', [AttendanceController::class, 'data'])->name('.atten');
 
         //ユーザーごとの勤怠表
-        Route::match(['get', 'post'], 'diligence', [DiligenceController::class, 'diligence'])->name('.diligence');
+        Route::get('diligence', [DiligenceController::class, 'diligence'])->name('.diligence');
 
         //ユーザー一覧ページ
-        Route::match(['get', 'post'], 'users', [UsersController::class, 'users'])->name('.users');
+        Route::get('users', [UsersController::class, 'users'])->name('.users');
     });
 });
 

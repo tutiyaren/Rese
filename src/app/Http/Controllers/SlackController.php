@@ -27,7 +27,8 @@ class SlackController extends Controller
 
         $number2 = ($existing_record && $existing_record->start_time && $existing_record->start_rest && !$existing_record->end_rest) ? true : false;
 
-        $number3 = ($existing_record && $existing_record->start_time && $existing_record->start_rest && !$existing_record->end_time) ? true : false;
+        $number3 = ($existing_record && !$existing_record->start_rest) ? true : false;
+
 
         return view('engrave', compact('slacks', 'existing_record', 'working', 'rest_records', 'number1', 'number2', 'number3'));
     }
@@ -92,7 +93,7 @@ class SlackController extends Controller
         $rest->end_time = null;
         $rest->save();
 
-        $number1 = false;
+        $number3 = true;
 
         return redirect('/');
     }
@@ -112,7 +113,7 @@ class SlackController extends Controller
         $existing_record->end_time = Carbon::now();
         $existing_record->save();
 
-        $number1 = true;
+        $number3 = false;
 
         return redirect('/');
     }

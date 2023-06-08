@@ -43,7 +43,6 @@
                 <input type="hidden" name="start_time" value="{{Carbon\Carbon::now()->format('Y-m-d H:i:s')}}">
                 @else
                 <button class="inner" disabled>勤務開始</button>
-                <input type="hidden" name="start_time" value="{{Carbon\Carbon::now()->format('Y-m-d H:i:s')}}">
                 @endif
             </form>
         </div>
@@ -73,7 +72,7 @@
             @endif
         </div>
         <div class="card">
-            @if($working && !$number3)
+            @if($working && $number3)
             <form action="{{route('log.end_rest')}}" method="post">
                 @csrf
                 <button class="inner">休憩終了</button>
@@ -86,5 +85,4 @@
         </div>
     </div>
 </div>
-
 @endsection

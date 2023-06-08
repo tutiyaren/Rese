@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atte</title>
-    <link rel="icon" href="data:,">
+    <link rel="icon" href="../1554543.png" sizes="180x180" />
     <link rel="stylesheet" href="{{asset('css/sanitize.css')}}">
     <link rel="stylesheet" href="{{asset('css/index.css')}}">
     @yield('css')

@@ -5,6 +5,7 @@ use App\Http\Controllers\SlackController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\DiligenceController;
+use App\Http\Controllers\RegisteredUserController;
 use Illuminate\Support\Facades\Artisan;
 
 Route::group(['prefix' => '/', 'as' =>'log'], function() {
@@ -29,6 +30,9 @@ Route::group(['prefix' => '/', 'as' =>'log'], function() {
         Route::get('users', [UsersController::class, 'users'])->name('.users');
     });
 });
+
+Route::get('/provisional', [RegisteredUserController::class, 'provisional'])->name('provisional');
+Route::get('/confirmation', [RegisteredUserController::class, 'confirmation'])->name('confirmation');
 
 
 

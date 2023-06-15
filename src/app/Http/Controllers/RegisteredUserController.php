@@ -19,4 +19,14 @@ class RegisteredUserController extends Controller
         Users::create($user);
         redirect('/register');
     }
+
+    public function provisional()
+    {
+        return view('/provisional');
+    }
+
+    public function confirmation()
+    {
+        return view('/confirmation');
+    }
 }

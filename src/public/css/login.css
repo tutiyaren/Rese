@@ -37,6 +37,7 @@
     padding: 1% 1%;
     border: none;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 .form-button:hover {

@@ -19,13 +19,3 @@ Laravel8.x
 ## ER図
 ![ER図](https://github.com/tutiyaren/Atte/assets/126432220/a27431e7-2541-4605-8141-6d20a9eea11b)
 
-
-# 
-# Atte
-# Atte
-# Atte
-# Atte
-# Atte
-# Atte
-# Atte1
-# Atte

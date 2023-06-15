@@ -22,7 +22,7 @@ class SlacksTableSeeder extends Seeder
             'break_time' => '01:00:00',
             'working' => '09:00:00'
         ];
-        DB::table('slack')->insert($param);
+        DB::table('slacks')->insert($param);
         $param = [
             'users_id' => '1',
             'date' => '2023-03-02',
@@ -31,7 +31,7 @@ class SlacksTableSeeder extends Seeder
             'break_time' => '01:00:00',
             'working' => '09:30:00'
         ];
-        DB::table('slack')->insert($param);
+        DB::table('slacks')->insert($param);
         $param = [
             'users_id' => '1',
             'date' => '2023-03-3',
@@ -40,6 +40,6 @@ class SlacksTableSeeder extends Seeder
             'break_time' => '01:30:00',
             'working' => '09:30:00'
         ];
-        DB::table('slack')->insert($param);
+        DB::table('slacks')->insert($param);
     }
 }

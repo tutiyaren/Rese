@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Users;
 use App\Http\Requests\RegisterRequest;
+use App\Mail\RegistrationMail;
+use Illuminate\Support\Facades\Mail;
 
 class RegisteredUserController extends Controller
 {
-    public function create(Request $request)
+    public function create()
     {
         return view('/register');
     }

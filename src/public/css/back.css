@@ -1,0 +1,21 @@
+.header-back {
+    margin-top: 3%;
+    margin-left: 7%;
+    background-color: blue;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 10px 15px;
+    box-shadow: 3px 3px 5px gray;
+}
+
+.header-back__link {
+    color: #fff;
+    text-decoration: none;
+}
+
+.main {
+    max-width: 1500px;
+    margin: o auto;
+    width: 100%;
+}

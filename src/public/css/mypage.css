@@ -1,0 +1,199 @@
+.name {
+    width: 86%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.name-ttl {
+    font-size: 30px;
+}
+
+.mypage {
+    width: 86%;
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-around;
+}
+
+/* 予約状況 */
+.reservation {
+    width: 45%;
+}
+
+.reservation-inner {
+    border-radius: 7px;
+    background-color: rgb(60, 60, 247);
+    width: 85%;
+    box-shadow: 1px 1px 2px gray;
+    color: #fff;
+    padding: 5% 5%;
+    margin-bottom: 5%;
+}
+
+.form {
+    margin-bottom: 5%;
+}
+
+.form-head {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-head__timer {
+    width: 50%;
+}
+
+.clock {
+    font-size: 20px;
+    margin-right: 9%;
+}
+
+.form-head__delete {
+    background-color: rgb(60, 60, 247);
+    border-radius: 100%;
+    border: 1px solid #fff;
+    color: #fff;
+}
+
+.table-form {
+    width: 100%;
+}
+
+.table-form__tr-th {
+    text-align: left;
+    width: 30%;
+    padding-bottom: 3%;
+}
+
+.table-form__tr-td {
+    text-align: left;
+    width: 70%;
+    padding-bottom: 3%;
+}
+
+/* お気に入り店舗 */
+.favorite {
+    width: 55%;
+}
+
+.favorite-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.card {
+    width: 47%;
+    border-radius: 5px;
+    background-color: #fff;
+    margin-bottom: 2%;
+    padding-bottom: 1%;
+}
+
+.card-top__img {
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.shop-name {
+    text-align: left;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 6%;
+    margin-top: 5%;
+    margin-bottom: -2%;
+}
+
+.shop-area {
+    display: flex;
+    margin-left: 6%;
+}
+
+.detail {
+    display: flex;
+    justify-content: space-between;
+}
+
+.detail-see {
+    background-color: blue;
+    margin-left: 7%;
+    border-radius: 5px;
+    color: #fff;
+    padding: 5px 12px;
+    border: none;
+    text-decoration: none;
+}
+
+.detail-see:hover {
+    opacity: 0.6;
+}
+
+.detail-favorite {
+    margin-right: 6%;
+}
+
+.detail-favorite__submit {
+    background-color: #fff;
+    border: none;
+}
+
+.heart {
+    font-size: 35px;
+    color: rgb(201, 199, 199);
+
+}
+
+@media screen and (max-width:810px) {
+    .table-form__tr-th {
+        font-size: 12px;
+    }
+
+    .table-form__tr-td {
+        font-size: 10px;
+    }
+
+    .detail-see {
+        font-size: 12px;
+        line-height: 200%;
+    }
+
+    .heart {
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-width:650px) {
+    .mypage {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .reservation,
+    .reservation-inner,
+    .favorite {
+        margin: 0 auto;
+    }
+
+    .reservation,
+    .favorite {
+        width: 80%;
+    }
+
+    .favorite {
+        margin-top: 8%;
+    }
+}
+
+@media screen and (max-width:550px) {
+    .favorite-cards {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card {
+        width: 100%;
+    }
+}

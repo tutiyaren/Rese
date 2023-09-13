@@ -26,23 +26,21 @@ class User extends Authenticatable
         'user_name'
     ];
 
-    public function slacks()
+    //shopsとのリレーション
+    public function shop()
     {
-        return $this->hasMany(Slack::class);
+        return $this->hasMany(Shop::class, 'user_id', 'id');
     }
-    public function rests()
+    //reservationsとのリレーション
+    public function reservation()
     {
-        return $this->hasMany(Rest::class);
+        return $this->hasMany(Reservation::class, 'user_id', 'id');
     }
-
-    public function scopeKeywordSearch($query, $keyword)
+    //user_shop_favoritesとのリレーション
+    public function favoriteShop()
     {
-        if(!empty($keyword)){
-            return $query->where('name', 'like', '%' . $keyword . '%');
-        }
-        return $query;
+        return $this->belongsToMany(Shop::class, 'user_shop_favorites', 'user_id', 'shop_id');
     }
-
 
     protected $table = 'users';
 

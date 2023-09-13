@@ -1,0 +1,143 @@
+.squeeze-form {
+    display: flex;
+    margin-top: 7%;
+    justify-content: right;
+    margin-right: 5%;
+    border: none;
+}
+
+.squeeze-area,
+.squeeze-genre,
+.squeeze-search {
+    padding: 10px 10px;
+    border: none;
+    font-weight: bold;
+}
+
+.squeeze-area,
+.squeeze-genre {
+    border-right: 1px solid rgb(221, 219, 219);
+}
+
+.squeeze-area {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.squeeze-search {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    width: 70%;
+}
+
+.cards {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 2%;
+}
+
+.card {
+    width: 24%;
+    border-radius: 5px;
+    background-color: #fff;
+    margin-bottom: 2%;
+    padding-bottom: 1%;
+}
+
+.card-top__img {
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.shop-name {
+    text-align: left;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 6%;
+    margin-top: 5%;
+    margin-bottom: -2%;
+}
+
+.shop-area {
+    display: flex;
+    margin-left: 6%;
+}
+
+.shop-area__place {
+    margin-right: 3%;
+}
+
+.detail {
+    display: flex;
+    justify-content: space-between;
+}
+
+.detail-see {
+    background-color: blue;
+    margin-left: 7%;
+    border-radius: 5px;
+    color: #fff;
+    padding: 5px 12px;
+    border: none;
+    text-decoration: none;
+    line-height: 180%;
+}
+
+.detail-see:hover {
+    opacity: 0.6;
+}
+
+.detail-favorite {
+    margin-right: 6%;
+}
+
+.detail-favorite__submit {
+    background-color: #fff;
+    border: none;
+}
+
+.heart {
+    font-size: 35px;
+    color: rgb(201, 199, 199);
+    cursor: pointer;
+
+}
+.heart-red {
+    color: red;
+    font-size: 30px;
+}
+
+@media screen and (max-width:810px) {
+    .card {
+        width: 31%;
+    }
+
+    .detail-see {
+        font-size: 12px;
+        line-height: 200%;
+    }
+
+    .heart {
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-width:700px) {
+
+    .squeeze-area,
+    .squeeze-genre {
+        width: 35%;
+        font-size: 7px;
+    }
+}
+
+@media screen and (max-width:550px) {
+    .card {
+        width: 48%;
+    }
+}

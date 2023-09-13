@@ -1,61 +1,55 @@
 @extends('layouts.index')
 
 @section('css')
-<link rel="stylesheet" href="{{asset('css/register.css')}}">
+<link rel="stylesheet" href="{{ asset('css/register.css') }}">
 @endsection
 
 @section('content')
-
-<div class="main">
-    <div class="top">
-        <h2 class="ttl">会員登録</h2>
+<!-- 会員登録 -->
+<div class="register">
+    <div class="register-ttl">
+        <h2 class="register-ttl__top">Registration</h2>
     </div>
-
-    <form class="register" method="post" action="/register">
+    <form class="register-inner" method="post" action="/register">
         @csrf
-        <div class="input">
-            <input type="text" class="name" placeholder="名前" name="name" value="{{old('name')}}">
+        <div class="user">
+            <!-- 名前 -->
+            <div class="user-name">
+                <i class="fa-solid fa-user icon"></i>
+                <input type="text" name="name" class="user-name__input" value="{{ old('name') }}" placeholder="Username" required>
+                @error('name')
+                <p class="error">{{$errors->first('name')}}</p>
+                @enderror
+            </div>
+            <!-- メールアドレス -->
+            <div class="user-email">
+                <i class="fa-solid fa-envelope icon"></i>
+                <input type="email" name="email" class="user-email__input" value="{{ old('email') }}" placeholder="Email" required>
+                @error('email')
+                <p class="error">{{$errors->first('email')}}</p>
+                @enderror
+            </div>
+            <!-- パスワード -->
+            <div class="user-password">
+                <i class="fa-solid fa-lock icon"></i>
+                <input type="password" name="password" class="user-password__input" placeholder="Password" required>
+                @error('password')
+                <p class="error">{{$errors->first('password')}}</p>
+                @enderror
+            </div>
+            <!-- 確認パスワード -->
+            <div class="user-password__confirmation">
+                <i class="fa-solid fa-lock icon"></i>
+                <input type="password" name="password_confirmation" class="user-password_confirmation__input" placeholder="Password_confirmation" required>
+                @error('password')
+                <p class="error">{{$errors->first('password')}}</p>
+                @enderror
+            </div>
         </div>
-        @error('name')
-        <div class="error">
-            {{$errors->first('name')}}
+        <div class="button">
+            <button class="button-submit" type="submit">登録</button>
         </div>
-        @enderror
-        <div class="input">
-            <input type="email" class="email" placeholder="メールアドレス" name="email" value="{{old('email')}}">
-        </div>
-        @error('email')
-        <div class="error">
-            {{$errors->first('email')}}
-        </div>
-        @enderror
-        <div class="input">
-            <input type="password" class="password" placeholder="パスワード" name="password">
-        </div>
-        @error('password')
-        <div class="error">
-            {{$errors->first('password')}}
-        </div>
-        @enderror
-        <div class="input">
-            <input type="password" class="password" placeholder="確認用パスワード" name="password_confirmation">
-        </div>
-        @error('password_confirmation')
-        <div class="error">
-            {{$errors->first('password_confirmation')}}
-        </div>
-        @enderror
-        <div class="input form-button">
-            <button class="form-button__submit" type="submit">会員登録</button>
-        </div>
-
     </form>
-
-    <div class="have">
-        <p class="have-text">アカウントをお持ちの方はこちらから</p>
-        <a href="{{route('login')}}" class="have-login">ログイン</a>
-    </div>
-
 </div>
 
 @endsection

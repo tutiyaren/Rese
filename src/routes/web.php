@@ -1,40 +1,34 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SlackController;
-use App\Http\Controllers\AttendanceController;
-use App\Http\Controllers\UsersController;
-use App\Http\Controllers\DiligenceController;
-use App\Http\Controllers\RegisteredUserController;
-use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\ShopController;
+use App\Http\Controllers\MypageController;
+use App\Http\Controllers\DoneController;
+use App\Http\Controllers\StateController;
 
-Route::group(['prefix' => '/', 'as' =>'log'], function() {
-    Route::middleware('auth')->group(function () {
 
-        //ホーム
-        Route::get('', [SlackController::class, 'work'])->name('.eng');
-                
-        Route::post('start', [SlackController::class, 'work_start'])->name('.start');
-        Route::post('end', [SlackController::class, 'work_end'])->name('.end');
 
-        Route::post('start_rest', [SlackController::class, 'start_rest'])->name('.start_rest');
-        Route::post('end_rest', [SlackController::class, 'end_rest'])->name('.end_rest');
+//topページ(shop-all)
+Route::get('/', [ShopController::class, 'list'])->name('list');
+Route::post('/favorite/toggle/{id}', [ShopController::class, 'favorite'])->name('favorite.toggle');
 
-        //日付一覧
-        Route::get('attendance', [AttendanceController::class, 'data'])->name('.atten');
+//お店の詳細ページ
+Route::get('/detail/{id}', [ShopController::class, 'detail'])->name('detail');
+Route::post('/detail/{id}/store', [ShopController::class, 'store']);
 
-        //ユーザーごとの勤怠表
-        Route::get('diligence', [DiligenceController::class, 'diligence'])->name('.diligence');
+Route::get('/done', [DoneController::class, 'done'])->name('done');
+Route::get('/thanks', [DoneController::class, 'thanks']);
+Route::get('/guest', [StateController::class, 'guest'])->name('guest');
+Route::get('/member', [StateController::class, 'member']);
 
-        //ユーザー一覧ページ
-        Route::get('users', [UsersController::class, 'users'])->name('.users');
-    });
+Route::middleware('auth')->group(function () {
+    Route::get('/mypage', [MypageController::class, 'mypage']);
+    //Route::view('/login', 'login')->name('login');
 });
 
-Route::get('/provisional', [RegisteredUserController::class, 'provisional'])->name('provisional');
-Route::get('/confirmation', [RegisteredUserController::class, 'confirmation'])->name('confirmation');
 
-
+//Route::get('/login', [AuthenticatedSessionController::class, 'login']);
+//Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
 
 
 
@@ -49,3 +43,6 @@ Route::get('/confirmation', [RegisteredUserController::class, 'confirmation'])->
 |
 */
 
+//Route::get('/', function () {
+    //return view('welcome');
+//});

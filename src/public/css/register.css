@@ -1,63 +1,85 @@
-.main {
-    width: 100%;
-    background-color: rgb(219, 216, 216);
-    padding-bottom: 6%;
-}
-
-.top {
-    text-align: center;
-}
-
-.ttl {
-    padding: 3% 0
-}
-
 .register {
     margin: 0 auto;
     text-align: center;
+    width: 30%;
+    box-shadow: 2px 2px 4px gray;
+    margin-top: 8%;
 }
-.input {
-    margin-bottom: 3%;
-}
-.name,
-.email,
-.password {
-    width: 35%;
-    padding: 1% 1%;
-    border: 1px solid #4b4a4a;
-    background-color: rgb(219, 216, 216);
-    text-align: left;
-}
-.form-button__submit {
+
+.register-ttl {
     background-color: blue;
+    text-align: left;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.register-ttl__top {
     color: #fff;
-    width: 37%;
-    padding: 1% 1%;
+    margin: 0;
+    padding: 13px 13px;
+}
+
+.register-inner {
+    background-color: #fff;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.user {
+    padding: 5% 3%;
+}
+
+.user-name,
+.user-email,
+.user-password {
+    margin-bottom: 2%;
+}
+
+.user-name__input,
+.user-email__input,
+.user-password__input,
+.user-password_confirmation__input {
+    width: 60%;
+    padding: 5px 5px;
     border: none;
-    cursor: pointer;
+    border-bottom: 1px solid #000;
+}
+
+.icon {
+    margin-right: 1%;
+}
+
+.button {
+    padding-bottom: 5%;
+    text-align: right;
+}
+
+.button-submit {
+    background-color: blue;
+    color: white;
     border-radius: 5px;
-}
-.form-button:hover {
-    opacity: 0.7;
-}
-
-.have {
-    text-align: center;
-}
-.have-text {
-    font-size: 12px;
-    color: rgb(138, 136, 136);
-}
-.have-login {
-    text-decoration: none;
-    display: inline-block;
-    color: blue;
-}
-.have-login:hover {
-    opacity: 0.8;
+    border: none;
+    margin-right: 10%;
+    padding: 6px 15px;
+    cursor: pointer;
 }
 
-.error {
-    color: red;
-    margin-top: -3%;
+.button-submit:hover {
+    opacity: 0.6;
+}
+
+@media screen and (max-width:800px) {
+    .register {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width:550px) {
+    .register-ttl__top {
+        font-size: 18px;
+    }
+
+    .button-submit {
+        font-size: 10px;
+    }
 }

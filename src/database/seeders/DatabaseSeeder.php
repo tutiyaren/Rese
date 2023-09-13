@@ -14,8 +14,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-       
-        $this->call(SlacksTableSeeder::class);
+        // \App\Models\User::factory(10)->create();
+        $this->call(UsersTableSeeder::class);
+        $this->call(ShopsTableSeeder::class);
+        $this->call(User_Shop_FavoritesTableSeeder::class);
+        $this->call(ReservationsTableSeeder::class);
         
     }
 }

@@ -12,6 +12,7 @@
     padding: 10px 10px;
     border: none;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .squeeze-area,
@@ -109,7 +110,7 @@
 }
 .heart-red {
     color: red;
-    font-size: 30px;
+    font-size: 35px;
 }
 
 @media screen and (max-width:810px) {
@@ -119,12 +120,10 @@
 
     .detail-see {
         font-size: 12px;
-        line-height: 200%;
+        line-height: 230%;
     }
 
-    .heart {
-        font-size: 30px;
-    }
+    
 }
 
 @media screen and (max-width:700px) {

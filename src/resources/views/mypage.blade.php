@@ -8,7 +8,7 @@
 
 <!-- ユーザー名前 -->
 <div class="name">
-    <h2 class="name-ttl">testさん</h2>
+    <h2 class="name-ttl">{{Auth::user()->name}}さん</h2>
 </div>
 <div class="mypage">
     <!-- 予約状況 -->
@@ -16,99 +16,40 @@
         <div class="reservation-ttl">
             <h3 class="reservation-ttl__item">予約状況</h3>
         </div>
+        @foreach ($reservations as $index => $reservation)
         <div class="reservation-inner">
-            <form method="post" action="" class="form">
+            <form method="post" action="{{ route('mypage.delete', ['id' => $reservation->id]) }}" class="form">
                 @csrf
+                @method('DELETE')
                 <div class="form-head">
-                    <span class="form-head__timer"><i class="fa-solid fa-clock clock"></i>予約１</span>
+                    <span class="form-head__timer"><i class="fa-solid fa-clock clock"></i>予約 {{ $index + 1 }}</span>
                     <button type="submit" class="form-head__delete"><i class="fa-solid fa-xmark delete"></i></button>
                 </div>
             </form>
             <!-- 予約内容 -->
-            <form method="get" action="" class="table">
+            <div class="table">
                 @csrf
                 <table class="table-form">
                     <tr class="table-form__tr">
                         <th class="table-form__tr-th">Shop</th>
-                        <td class="table-form__tr-td">仙人</td>
+                        <td class="table-form__tr-td">{{ $reservation->shop->shop }}</td>
                     </tr>
                     <tr class="table-form__tr">
                         <th class="table-form__tr-th">Date</th>
-                        <td class="table-form__tr-td">2023-09-30</td>
+                        <td class="table-form__tr-td">{{ $reservation->date }}</td>
                     </tr>
                     <tr class="table-form__tr">
                         <th class="table-form__tr-th">Time</th>
-                        <td class="table-form__tr-td">17:00</td>
+                        <td class="table-form__tr-td">{{ $reservation->time }}</td>
                     </tr>
                     <tr class="table-form__tr">
                         <th class="table-form__tr-th">Number</th>
-                        <td class="table-form__tr-td">2人</td>
+                        <td class="table-form__tr-td">{{ $reservation->number }}</td>
                     </tr>
                 </table>
-            </form>
+            </div>
         </div>
-        <div class="reservation-inner">
-            <form method="post" action="" class="form">
-                @csrf
-                <div class="form-head">
-                    <span class="form-head__timer"><i class="fa-solid fa-clock clock"></i>予約１</span>
-                    <button type="submit" class="form-head__delete"><i class="fa-solid fa-xmark delete"></i></button>
-                </div>
-            </form>
-            <!-- 予約内容 -->
-            <form method="get" action="" class="table">
-                @csrf
-                <table class="table-form">
-                    <tr class="table-form__tr">
-                        <th class="table-form__tr-th">Shop</th>
-                        <td class="table-form__tr-td">仙人</td>
-                    </tr>
-                    <tr class="table-form__tr">
-                        <th class="table-form__tr-th">Date</th>
-                        <td class="table-form__tr-td">2023-09-30</td>
-                    </tr>
-                    <tr class="table-form__tr">
-                        <th class="table-form__tr-th">Time</th>
-                        <td class="table-form__tr-td">17:00</td>
-                    </tr>
-                    <tr class="table-form__tr">
-                        <th class="table-form__tr-th">Number</th>
-                        <td class="table-form__tr-td">2人</td>
-                    </tr>
-                </table>
-            </form>
-        </div>
-        <div class="reservation-inner">
-            <form method="post" action="" class="form">
-                @csrf
-                <div class="form-head">
-                    <span class="form-head__timer"><i class="fa-solid fa-clock clock"></i>予約１</span>
-                    <button type="submit" class="form-head__delete"><i class="fa-solid fa-xmark delete"></i></button>
-                </div>
-            </form>
-            <!-- 予約内容 -->
-            <form method="get" action="" class="table">
-                @csrf
-                <table class="table-form">
-                    <tr class="table-form__tr">
-                        <th class="table-form__tr-th">Shop</th>
-                        <td class="table-form__tr-td">仙人</td>
-                    </tr>
-                    <tr class="table-form__tr">
-                        <th class="table-form__tr-th">Date</th>
-                        <td class="table-form__tr-td">2023-09-30</td>
-                    </tr>
-                    <tr class="table-form__tr">
-                        <th class="table-form__tr-th">Time</th>
-                        <td class="table-form__tr-td">17:00</td>
-                    </tr>
-                    <tr class="table-form__tr">
-                        <th class="table-form__tr-th">Number</th>
-                        <td class="table-form__tr-td">2人</td>
-                    </tr>
-                </table>
-            </form>
-        </div>
+        @endforeach
     </article>
     <!-- お気に入り店舗 -->
     <article class="favorite">
@@ -116,71 +57,29 @@
             <h3 class="favorite-ttl__item">お気に入り店舗</h3>
         </div>
         <div class="favorite-cards">
-
+            @foreach($favoriteShops as $favoriteShop)
             <div class="card">
                 <div class="card-top">
-                    <img class="card-top__img" src="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg" alt="お店の画像">
+                    <img class="card-top__img" src="{{ $favoriteShop->shop->image }}" alt="お店の画像">
                 </div>
                 <div class="card-bottom">
                     <div class="shop">
-                        <p class="shop-name">仙人</p>
+                        <p class="shop-name">{{ $favoriteShop->shop->shop }}</p>
                         <div class="shop-area">
-                            <p class="shop-area__place">#東京都</p>
-                            <p class="shop-area__genre">#寿司</p>
+                            <p class="shop-area__place">#{{ $favoriteShop->shop->area }}</p>
+                            <p class="shop-area__genre">#{{ $favoriteShop->shop->genre }}</p>
                         </div>
                     </div>
                     <div class="detail">
-                        <a href="/detail" class="detail-see">詳しく見る</a>
-                        <form method="" action="" class="detail-favorite">
+                        <a href="{{ route('detail', ['id' => $favoriteShop->shop->id]) }}" class=" detail-see">詳しく見る</a>
+                        <form method="post" action="{{ route('favorite.toggle', ['id' => $favoriteShop->shop->id]) }}" class="detail-favorite">
                             @csrf
-                            <button class="detail-favorite__submit" type="submit"><i class="fa-solid fa-heart heart"></i></button>
+                            <button class="detail-favorite__submit" type="submit"><i class="fa-solid fa-heart heart heart-red"></i></button>
                         </form>
                     </div>
                 </div>
             </div>
-            <div class="card">
-                <div class="card-top">
-                    <img class="card-top__img" src="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg" alt="お店の画像">
-                </div>
-                <div class="card-bottom">
-                    <div class="shop">
-                        <p class="shop-name">仙人</p>
-                        <div class="shop-area">
-                            <p class="shop-area__place">#東京都</p>
-                            <p class="shop-area__genre">#寿司</p>
-                        </div>
-                    </div>
-                    <div class="detail">
-                        <a href="/detail" class="detail-see">詳しく見る</a>
-                        <form method="" action="" class="detail-favorite">
-                            @csrf
-                            <button class="detail-favorite__submit" type="submit"><i class="fa-solid fa-heart heart"></i></button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-top">
-                    <img class="card-top__img" src="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg" alt="お店の画像">
-                </div>
-                <div class="card-bottom">
-                    <div class="shop">
-                        <p class="shop-name">仙人</p>
-                        <div class="shop-area">
-                            <p class="shop-area__place">#東京都</p>
-                            <p class="shop-area__genre">#寿司</p>
-                        </div>
-                    </div>
-                    <div class="detail">
-                        <a href="/detail" class="detail-see">詳しく見る</a>
-                        <form method="" action="" class="detail-favorite">
-                            @csrf
-                            <button class="detail-favorite__submit" type="submit"><i class="fa-solid fa-heart heart"></i></button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
+            @endforeach
         </div>
     </article>
 </div>

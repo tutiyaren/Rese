@@ -30,36 +30,45 @@
             </div>
             <!-- 入力 -->
             <div class="reservation-inner">
+                <!-- 日付入力 -->
                 <input type="date" name="date" value="{{ $now->format('Y-m-d') }}" min="{{ $now->format('Y-m-d') }}" class="reservation-inner__date" required>
                 <br>
+                <!-- 時間入力 -->
                 <select name="time" class="reservation-inner__time" required>
                     @foreach ($futureTimes as $time)
                     <option value="{{ $time }}">{{ $time }}</option>
                     @endforeach
                 </select>
                 <br>
+                <!-- 人数入力 -->
                 <select name="number" class="reservation-inner__number" required>
                     <option value="1人">1人</option>
                     <option value="2人">2人</option>
                     <option value="3人">3人</option>
                     <option value="4人">4人</option>
+                    <option value="2人">5人</option>
+                    <option value="3人">6人</option>
                 </select>
-                <p class="reservation-inner__message">5人以上の方はこちらで予約せず、店舗にお問い合わせをお願いします</p>
+                <p class="reservation-inner__message">7名以上の方はこちらで予約せず、店舗にお問い合わせをお願いします</p>
             </div>
             <!-- 入力内容確認 -->
             <table class="reservation-table">
+                <!-- 店名確認 -->
                 <tr class="reservation-table__tr">
                     <th class="reservation-table__tr-th">Shop</th>
                     <td class="reservation-table__tr-td">{{ $shop->shop }}</td>
                 </tr>
+                <!-- 日付確認 -->
                 <tr class="reservation-table__tr">
                     <th class="reservation-table__tr-th">Date</th>
                     <td class="reservation-table__tr-td">2023-09-28</td>
                 </tr>
+                <!-- 時間確認 -->
                 <tr class="reservation-table__tr">
                     <th class="reservation-table__tr-th">Time</th>
                     <td class="reservation-table__tr-td">17:00</td>
                 </tr>
+                <!-- 人数確認 -->
                 <tr class="reservation-table__tr">
                     <th class="reservation-table__tr-th">Number</th>
                     <td class="reservation-table__tr-td">2人</td>

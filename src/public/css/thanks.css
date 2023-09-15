@@ -1,6 +1,6 @@
 .card {
     background-color: #fff;
-    width: 35%;
+    width: 40%;
     margin: 0 auto;
     margin-top: 5%;
     border-radius: 3px;
@@ -10,6 +10,9 @@
 .card-text {
     padding-top: 15%;
     margin-bottom: 10%;
+}
+.card-text__thanks {
+    font-size: 20px;
 }
 
 .card-login {
@@ -36,11 +39,11 @@
 
 @media screen and (max-width:1100px) {
     .card-text__thanks {
-        font-size: 20px;
+        font-size: 15px;
     }
 
     .card-login__button {
-        font-size: 15px;
+        font-size: 13px;
     }
 }
 
@@ -48,11 +51,14 @@
     .card {
         width: 50%;
     }
+    .card-text__thanks {
+        font-size: 14px;
+    }
 }
 
 @media screen and (max-width:650px) {
     .card-text__thanks {
-        font-size: 15px;
+        font-size: 12px;
     }
 
     .card-login__button {

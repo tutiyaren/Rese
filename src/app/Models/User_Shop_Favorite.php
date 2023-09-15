@@ -22,7 +22,7 @@ class User_Shop_Favorite extends Model
     //shopsとのリレーション
     public function shop()
     {
-        return $this->belongsToMany(Reservation::class, 'shop_id', 'id');
+        return $this->belongsTo(Shop::class, 'shop_id', 'id');
     }
 
     protected $table = 'user_shop_favorites';

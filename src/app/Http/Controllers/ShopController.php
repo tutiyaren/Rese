@@ -64,7 +64,7 @@ class ShopController extends Controller
             ]);
         }
 
-        return redirect('/');
+        return redirect()->back();
     }
 
 
@@ -73,10 +73,11 @@ class ShopController extends Controller
     {
         //特定の店舗の予約view
         $shop = Shop::findOrFail($id);
+
+        //予約時間選択肢
         $now = Carbon::now();
         $futureTimes = [];
         $interval = 30;
-
         for ($hour = 17; $hour <= 20; $hour++) {
             for ($minute = 0; $minute < 60; $minute += $interval) {
                 $time = $now->setHour($hour)->setMinute($minute)->format('H:i');

@@ -79,6 +79,7 @@
     border: none;
     margin-bottom: 2%;
     padding: 5px 8px;
+    cursor: pointer;
 }
 
 .reservation-inner__time {
@@ -87,6 +88,7 @@
     border: none;
     margin-bottom: 2%;
     padding: 5px 8px;
+    cursor: pointer;
 }
 
 .reservation-inner__number {
@@ -94,6 +96,7 @@
     border-radius: 3px;
     border: none;
     padding: 5px 8px;
+    cursor: pointer;
 }
 
 .reservation-inner__message {
@@ -156,7 +159,7 @@
 
 @media screen and (max-width:900px) {
     .detail-reservation {
-        width: 140%;
+        width: 180%;
     }
 
     .reservation-table__tr-th {
@@ -166,11 +169,17 @@
     .reservation-table__tr-td {
         font-size: 10px;
     }
+    .reservation-decision__login {
+        font-size: 13px;
+    }
 }
 
 @media screen and (max-width:786px) {
     .detail-reservation {
-        width: 170%;
+        width: 200%;
+    }
+    .reservation-decision__login {
+        font-size: 10px;
     }
 }
 

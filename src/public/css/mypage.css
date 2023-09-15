@@ -53,6 +53,7 @@
     border-radius: 100%;
     border: 1px solid #fff;
     color: #fff;
+    cursor: pointer;
 }
 
 .table-form {
@@ -142,7 +143,11 @@
 .heart {
     font-size: 35px;
     color: rgb(201, 199, 199);
-
+    cursor: pointer;
+}
+.heart-red {
+    color: red;
+    font-size: 35px;
 }
 
 @media screen and (max-width:810px) {
@@ -156,11 +161,21 @@
 
     .detail-see {
         font-size: 12px;
-        line-height: 200%;
+        padding: 3px 8px;
+        line-height: 30%;
     }
-
-    .heart {
+    .heart-red {
         font-size: 30px;
+    }
+}
+@media screen and (max-width:736px) {
+    .shop-area__place,
+    .shop-area__genre {
+        font-size: 5px;
+    }
+    .detail-see {
+        font-size: 8px;
+        line-height: 250%;
     }
 }
 
@@ -175,6 +190,9 @@
     .reservation-inner,
     .favorite {
         margin: 0 auto;
+    }
+    .reservation-inner {
+        margin-bottom: 3%;
     }
 
     .reservation,

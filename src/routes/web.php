@@ -11,18 +11,22 @@ use App\Http\Controllers\StateController;
 //topページ(shop-all)
 Route::get('/', [ShopController::class, 'list'])->name('list');
 Route::post('/favorite/toggle/{id}', [ShopController::class, 'favorite'])->name('favorite.toggle');
-
 //お店の詳細ページ
 Route::get('/detail/{id}', [ShopController::class, 'detail'])->name('detail');
 Route::post('/detail/{id}/store', [ShopController::class, 'store']);
-
+//予約完了ページ
 Route::get('/done', [DoneController::class, 'done'])->name('done');
+//会員登録終了ページ
 Route::get('/thanks', [DoneController::class, 'thanks']);
+//未ログイン時
 Route::get('/guest', [StateController::class, 'guest'])->name('guest');
+//ログイン時
 Route::get('/member', [StateController::class, 'member']);
 
 Route::middleware('auth')->group(function () {
-    Route::get('/mypage', [MypageController::class, 'mypage']);
+    //マイページ
+    Route::get('/mypage', [MypageController::class, 'mypage'])->name('mypage');
+    Route::delete('/mypage/delete/{id}', [MypageController::class, 'delete'])->name('mypage.delete');
     //Route::view('/login', 'login')->name('login');
 });
 

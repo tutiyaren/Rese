@@ -4,6 +4,7 @@
     width: 30%;
     box-shadow: 2px 2px 4px gray;
     margin-top: 8%;
+    border-radius: 8px;
 }
 
 .register-ttl {

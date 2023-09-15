@@ -40,7 +40,7 @@
                     </tr>
                     <tr class="table-form__tr">
                         <th class="table-form__tr-th">Time</th>
-                        <td class="table-form__tr-td">{{ $reservation->time }}</td>
+                        <td class="table-form__tr-td">{{ \Carbon\Carbon::parse($reservation->time)->format('H:i') }}</td>
                     </tr>
                     <tr class="table-form__tr">
                         <th class="table-form__tr-th">Number</th>

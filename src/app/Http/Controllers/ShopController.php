@@ -84,8 +84,13 @@ class ShopController extends Controller
                 $futureTimes[] = $time;
             }
         }
+        //予約時間選択肢
+        $numbers = [];
+        for ($i = 1; $i <= 6; $i++) {
+            $numbers[] = $i;
+        }
 
-        return view('detail', compact('shop', 'now', 'futureTimes'));
+        return view('detail', compact('shop', 'now', 'futureTimes', 'numbers'));
     }
 
     //飲食店詳細の予約フォームPOST

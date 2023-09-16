@@ -105,29 +105,15 @@
 
     // 日付の変更を監視
     dateInput.addEventListener('input', function() {
-        // 日付が変更されたらリアルタイムで確認内容を更新
-        updateConfirmation();
-    });
-
-    // 各入力欄の変更を監視
-    timeInput.addEventListener('change', function() {
-        // 時間が変更されたらリアルタイムで確認内容を更新
-        updateConfirmation();
-    });
-
-    numberInput.addEventListener('change', function() {
-        // 人数が変更されたらリアルタイムで確認内容を更新
-        updateConfirmation();
-    });
-
-
-    // 日付の変更を監視
-    dateInput.addEventListener('input', function() {
         const selectedDate = new Date(dateInput.value);
         const currentDate = new Date();
 
         // 日付が当日かどうかを確認
-        if (selectedDate.getDate() === currentDate.getDate()) {
+        if (
+            selectedDate.getFullYear() === currentDate.getFullYear() &&
+            selectedDate.getMonth() === currentDate.getMonth() &&
+            selectedDate.getDate() === currentDate.getDate()
+        ) {
             // 当日の場合、過去の時間を非表示にする
             const currentTime = currentDate.getHours() * 60 + currentDate.getMinutes();
             for (const option of timeInput.options) {
@@ -148,6 +134,17 @@
         }
 
         // 時間選択肢を更新
+        updateConfirmation();
+    });
+
+    // 各入力欄の変更を監視
+    timeInput.addEventListener('change', function() {
+        // 時間が変更されたらリアルタイムで確認内容を更新
+        updateConfirmation();
+    });
+
+    numberInput.addEventListener('change', function() {
+        // 人数が変更されたらリアルタイムで確認内容を更新
         updateConfirmation();
     });
 

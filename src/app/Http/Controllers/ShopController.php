@@ -8,6 +8,8 @@ use App\Models\Reservation;
 use App\Models\User_Shop_Favorite;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ReservationRequest;
+use Illuminate\Support\Facades\Storage;
 
 class ShopController extends Controller
 {
@@ -84,7 +86,7 @@ class ShopController extends Controller
                 $futureTimes[] = $time;
             }
         }
-        //予約時間選択肢
+        //予約人数選択肢
         $numbers = [];
         for ($i = 1; $i <= 6; $i++) {
             $numbers[] = $i;
@@ -94,7 +96,7 @@ class ShopController extends Controller
     }
 
     //飲食店詳細の予約フォームPOST
-    public function store(Request $request)
+    public function store(ReservationRequest $request)
     {
         $shopId = $request->input('shop_id');
         $user = Auth::user();
@@ -110,4 +112,19 @@ class ShopController extends Controller
         
         return redirect()->route('done');   
     }
+
+    //飲食店画像のアップロード
+    //public function uploadImage(Request $request, $id)
+    //{
+        //$request->validate([
+            //'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // 画像のバリデーションルール
+        //]);
+        //if ($request->hasFile('image')) {
+            //$image = $request->file('image');
+            //$fileName = time() . '.' . //$image->getClientOriginalExtension();
+            //$path = $image->storeAs('public/uploads', $fileName); // 画像を保存
+            //return redirect('detail/{id}')->back();
+        //}
+        //return redirect('detail/{id}')->back();
+    //}
 }

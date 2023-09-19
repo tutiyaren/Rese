@@ -13,8 +13,14 @@
             <p class="kind-name"><a href="{{ route('list') }}" class="kind-back">&lt;</a>{{ $shop->shop }}</p>
         </div>
         <div class="img">
-            <img src="{{ $shop->image }}" alt="お店の画像" class="img-shop">
+            <img src="{{ asset('storage/' . $shop->image) }}" alt="お店の画像" class="img-shop" id="shop-image">
         </div>
+        <form action="/detail/{{ $shop->id }}/uploadImage" method="post" enctype="multipart/form-data" id="upload-form" style="display: none;">
+            @csrf
+            <input type="file" name="image" id="image-input" accept="image/*" required>
+            <button type="submit" style="display: none;" id="upload-button">アップロード</button>
+        </form>
+
         <div class="text">
             <span class="text-area">#{{ $shop->area }}</span><span class="text-genre">#{{ $shop->genre }}</span>
             <p class="text-content">{{ $shop->content }}</p>
@@ -40,6 +46,9 @@
                     <option value="{{ $time }}">{{ $time }}</option>
                     @endforeach
                 </select>
+                @error('time')
+                <p class="error-time">{{ $errors->first('time') }}</p>
+                @enderror
                 <br>
                 <!-- 人数入力 -->
                 <select name="number" id="number" class="reservation-inner__number" required>
@@ -49,6 +58,9 @@
                     @endforeach
                 </select>
                 <p class="reservation-inner__message">7名以上の方はこちらで予約せず、店舗に問い合わせをお願いします</p>
+                @error('number')
+                <p class="error-number">{{ $errors->first('number') }}</p>
+                @enderror
             </div>
             <!-- 入力内容確認 -->
             <table class="reservation-table">
@@ -86,6 +98,21 @@
 </div>
 
 <script>
+    // 画像をクリックするとファイル選択
+    const shopImage = document.getElementById('shop-image');
+    const imageInput = document.getElementById('image-input');
+    const uploadButton = document.getElementById('upload-button');
+
+    shopImage.addEventListener('click', function() {
+        imageInput.click();
+    });
+
+    // ファイルが選択されたらフォームを自動的に送信
+    imageInput.addEventListener('change', function() {
+        uploadButton.click(); // ファイルが選択されたらフォームを送信
+    });
+
+
     // 各入力欄の要素を取得
     const dateInput = document.getElementById('date');
     const timeInput = document.getElementById('time');

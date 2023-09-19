@@ -101,8 +101,18 @@
 .reservation-inner__message {
     font-size: 7px;
     color: yellow;
-    margin-bottom: 5%;
+    
     width: 85%;
+}
+.error-time,
+.error-number {
+    color: rgb(233, 152, 2);
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+}
+.error-number {
+    margin-bottom: 5%;
 }
 
 .reservation-table {

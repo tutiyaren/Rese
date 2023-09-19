@@ -137,8 +137,23 @@ return [
     */
 
     'custom' => [
-        '属性名' => [
-            'ルール名' => 'カスタムメッセージ',
+        'name' => [
+            'required' => '名前は必須です。',
+            'string' => '名前は文字列で入力してください',
+            'max' => '名前は最大255字までです',
+        ],
+        'email' => [
+            'email.required' => 'メールアドレスは必須です。',
+            'email.string' => 'メールアドレスは文字列で入力してください',
+            'email.email' => '有効なメールアドレスを入力してください',
+            'email.max' => 'メールアドレスは最大255字までです',
+            'email.unique' => 'このメールアドレスはすでに使用されています',
+        ],
+        'password' => [
+            'password.required' => 'パスワードは必須項目です',
+            'password.string' => 'パスワードは文字列で入力してください',
+            'password.min' => 'パスワードは少なくとも8文字必要です。',
+            'password.confirmed' => 'パスワードと確認用のパスワードが一致しません。',
         ],
     ],
 
@@ -153,6 +168,10 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'name' => '名前',
+        'email' => 'メールアドレス',
+        'password' => 'パスワード',
+    ],
 
 ];

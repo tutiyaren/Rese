@@ -71,6 +71,30 @@
     width: 70%;
     padding-bottom: 3%;
 }
+.date,
+.time,
+.number {
+    background-color: rgb(60, 60, 247);
+    border: none;
+    color: #fff;
+}
+.message {
+    color: yellow;
+    font-size: 3px;
+}
+.update {
+    text-align: right;
+}
+.update-submit {
+    cursor: pointer;
+    background-color: rgb(60, 60, 247);
+    border: none;
+    color: rgb(204, 126, 16);
+}
+.update-submit:hover {
+    background-color: rgb(209, 172, 119);
+    border-radius: 8px;
+}
 
 /* お気に入り店舗 */
 .favorite {

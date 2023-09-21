@@ -9,7 +9,7 @@ use App\Models\User_Shop_Favorite;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ReservationRequest;
-use Illuminate\Support\Facades\Storage;
+use App\Models\Review;
 
 class ShopController extends Controller
 {
@@ -112,19 +112,4 @@ class ShopController extends Controller
         
         return redirect()->route('done');   
     }
-
-    //飲食店画像のアップロード
-    //public function uploadImage(Request $request, $id)
-    //{
-        //$request->validate([
-            //'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // 画像のバリデーションルール
-        //]);
-        //if ($request->hasFile('image')) {
-            //$image = $request->file('image');
-            //$fileName = time() . '.' . //$image->getClientOriginalExtension();
-            //$path = $image->storeAs('public/uploads', $fileName); // 画像を保存
-            //return redirect('detail/{id}')->back();
-        //}
-        //return redirect('detail/{id}')->back();
-    //}
 }

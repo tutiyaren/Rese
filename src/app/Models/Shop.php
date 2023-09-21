@@ -32,6 +32,11 @@ class Shop extends Model
     {
         return $this->belongsToMany(User::class, 'user_shop_favorites', 'user_id', 'shop_id');
     }
+    //reviewsとのリレーション
+    public function reviews()
+    {
+        return $this->hasMany(Review::class, 'shop_id', 'id');
+    }
 
     //エリアでの検索
     public function scopeArea($query, $area)

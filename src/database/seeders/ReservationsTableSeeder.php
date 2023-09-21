@@ -17,7 +17,7 @@ class ReservationsTableSeeder extends Seeder
         $param = [
             'user_id' => '1',
             'shop_id' => '1',
-            'date' => '2023-09-30',
+            'date' => '2023-09-20',
             'time' => '17:00',
             'number' => '3'
         ];
@@ -41,7 +41,7 @@ class ReservationsTableSeeder extends Seeder
         $param = [
             'user_id' => '3',
             'shop_id' => '1',
-            'date' => '2023-10-01',
+            'date' => '2023-09-20',
             'time' => '17:00',
             'number' => '4'
         ];

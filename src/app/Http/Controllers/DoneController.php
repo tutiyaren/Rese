@@ -16,4 +16,9 @@ class DoneController extends Controller
     {
         return view('thanks');
     }
+    //レビュー送信完了ページ
+    public function send()
+    {
+        return view('send');
+    }
 }

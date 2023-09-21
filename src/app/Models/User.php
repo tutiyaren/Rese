@@ -41,6 +41,11 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Shop::class, 'user_shop_favorites', 'user_id', 'shop_id');
     }
+    //reviewsとのリレーション
+    public function review()
+    {
+        return $this->hasMany(Review::class, 'user_id', 'id');
+    }
 
     protected $table = 'users';
 

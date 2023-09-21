@@ -1,0 +1,182 @@
+.review {
+    width: 86%;
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-around;
+}
+
+/* 各お店の詳細 */
+.detaii-shop {
+    width: 60%;
+}
+
+.kind-name {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.kind-back {
+    text-decoration: none;
+    background-color: #fff;
+    color: #000;
+    border: none;
+    box-shadow: 1px 1px 2px gray;
+    border-radius: 7px;
+    padding: 0px 6px;
+    margin-right: 2%;
+}
+
+.kind-back:hover {
+    background-color: #f1c9c9;
+}
+
+.img-shop {
+    width: 80%; 
+}
+
+.text {
+    width: 75%;
+    margin-top: 3%;
+}
+
+.text-area {
+    margin-right: 2%;
+}
+
+.text-content {
+    margin-top: 5%;
+}
+
+/* レビュー */
+.review-wrap {
+    width: 100%;
+    margin-top: -3%;
+}
+
+.review-form {
+    background-color: rgb(60, 60, 247);
+    border-radius: 5px;
+    padding: 2% 0 0 0;
+    color: #fff;
+}
+
+.review-ttl,
+.review-inner {
+    padding-left: 5%;
+}
+
+.review-ttl__top {
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.star-rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+.star-rating input[type="radio"] {
+    display: none;
+}
+
+.star-rating label {
+    cursor: pointer;
+    font-size: 24px;
+    color: #ccc;
+    position: relative;
+    padding: 0 5px;
+}
+
+.star-rating label:hover,
+.star-rating label:hover~label,
+.star-rating input[type="radio"]:checked~label {
+    color: yellow;
+}
+
+.review-inner__comment {
+    width: 80%;
+    padding: 2%;
+    border-radius: 7px;
+    background-color:rgb(60, 60, 247);
+    color: #fff;
+}
+
+.error-rating,
+.error-comment {
+    color: rgb(233, 152, 2);
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+}
+
+.review-decision {
+    width: 100%;
+    background-color: rgb(30, 30, 194);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 35%;
+}
+
+.review-decision__submit {
+    border: none;
+    background-color: rgb(30, 30, 194);
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.review-decision__login {
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+@media screen and (max-width:900px) {
+    .review-wrap {
+        width: 180%;
+    }
+
+    .review-decision__login {
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width:786px) {
+    .review-wrap {
+        width: 200%;
+    }
+
+    .review-decision__login {
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width:680px) {
+    .review {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .text {
+        margin: 0 auto;
+    }
+
+    .review-wrap {
+        width: 80%;
+        margin: 0 auto;
+    }
+    .review-form {
+        padding: 2% 0 0 0;
+    }
+    .review-ttl,
+    .review-inner {
+        padding-left: 0%;
+    }
+    .star-rating {
+        justify-content: center;
+    }
+    
+}

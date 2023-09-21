@@ -10,7 +10,7 @@
     <!-- 各お店の詳細 -->
     <article class="detail-shop">
         <div class="kind">
-            <p class="kind-name"><a href="{{ route('list') }}" class="kind-back">&lt;</a>{{ $shop->shop }}</p>
+            <p class="kind-name"><a href="{{ url()->previous() }}" class="kind-back">&lt;</a>{{ $shop->shop }}</p>
         </div>
         <div class="img">
             <img src="{{ asset('storage/' . $shop->image) }}" alt="お店の画像" class="img-shop" id="shop-image">
@@ -88,7 +88,7 @@
             <!-- 予約確定ボタン -->
             <div class="reservation-decision">
                 @if(Auth::check())
-                <button class="reservation-decision__submit" typa="submit">予約する</button>
+                <button class="reservation-decision__submit" type="submit">予約する</button>
                 @else
                 <a href="/guest" class="reservation-decision__login">ログインされた方のみ予約できます</a>
                 @endif

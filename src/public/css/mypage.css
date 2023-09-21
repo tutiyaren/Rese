@@ -81,9 +81,10 @@
 .message {
     color: yellow;
     font-size: 3px;
+    margin-bottom: 3%;
 }
 .update {
-    text-align: right;
+    text-align: center;
 }
 .update-submit {
     cursor: pointer;
@@ -92,8 +93,21 @@
     color: rgb(204, 126, 16);
 }
 .update-submit:hover {
-    background-color: rgb(209, 172, 119);
+    font-weight: bold;
+    background-color: #fff;
     border-radius: 8px;
+    padding: 1% 2%;
+}
+.review {
+    text-decoration: none;
+    cursor: pointer;
+    color: rgb(204, 126, 16);
+}
+.review:hover {
+    font-weight: bold;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 1% 2%;
 }
 
 /* お気に入り店舗 */

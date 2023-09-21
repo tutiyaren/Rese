@@ -22,7 +22,7 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input)
     {
-        $validator = Validator::make($input, [
+        Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'email' => [
                 'required',
@@ -32,11 +32,7 @@ class CreateNewUser implements CreatesNewUsers
                 Rule::unique(User::class),
             ],
             'password' => $this->passwordRules(),
-        ]);
-
-        if ($validator->fails()) {
-            Log::error('Validation failed: ' . json_encode($validator->errors()));
-        }
+        ])->validate();
 
         return User::create([
             'name' => $input['name'],

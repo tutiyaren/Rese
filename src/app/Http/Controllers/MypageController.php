@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Reservation;
 use App\Models\User_Shop_Favorite;
 use Carbon\Carbon;
+use App\Models\Shop;
+use App\Models\Review;
+use App\Http\Requests\ReviewRequest;
 
 
 class MypageController extends Controller
@@ -69,4 +72,31 @@ class MypageController extends Controller
 
         return redirect('/mypage');
     }
+
+    //レビューページGET
+    public function review($id)
+    {
+        //特定の店舗の予約view
+        $shop = Shop::findOrFail($id);
+
+        return view('review', compact('shop'));
+    }
+
+    //レビューの送信フォームPOST
+    public function store(ReviewRequest $request)
+    {
+        $shopId = $request->input('shop_id');
+        $user = Auth::user();
+        //テーブルにレビュー情報追加
+        $reviewData = [
+            'user_id' => $user->id,
+            'shop_id' => $shopId,
+            'rating' => $request->input('rating'),
+            'comment' => $request->input('comment'),
+        ];
+        Review::create($reviewData);
+
+        return redirect()->route('send'); 
+    }
+
 }

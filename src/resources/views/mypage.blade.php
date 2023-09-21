@@ -70,7 +70,12 @@
                 </table>
                 <p class="message">7名以上の方はこちらで予約せず、店舗に問い合わせをお願いします</p>
                 <div class="update">
+                    <!-- 予約日時が過去の場合のみレビューリンクを表示 -->
+                    @if (\Carbon\Carbon::now() > \Carbon\Carbon::parse($reservation->date)->setTimeFromTimeString($reservation->time))
+                    <a href="{{ route('review', ['id' => $reservation->shop->id]) }}" class="review">レビューへ</a>
+                    @else
                     <button type="submit" class="update-submit">変更を保存</button>
+                    @endif
                 </div>
             </form>
         </div>

@@ -13,6 +13,17 @@
     </div>
     <form class="login-inner" method="post" action="/login">
         @csrf
+        <!-- ユーザータイプの選択 -->
+        <div class="user-type">
+            <label>
+                <input type="radio" name="user_type" value="user" {{ old('user_type') == 'user' ? 'checked' : '' }}>
+                一般ユーザー
+            </label>
+            <label>
+                <input type="radio" name="user_type" value="admin" {{ old('user_type') == 'admin' ? 'checked' : '' }}>
+                管理者
+            </label>
+        </div>
         <div class="user">
             <!-- メールアドレス -->
             <div class="user-email">

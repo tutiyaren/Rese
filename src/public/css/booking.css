@@ -1,0 +1,36 @@
+.booking {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+.booking-ttl {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 5%;
+}
+.booking-ttl__reservation {
+    line-height: 200%;
+}
+.booking-ttl__shop {
+    font-size: 30px;
+}
+.table {
+    margin: 0 auto;
+    width: 80%;
+}
+.table-tr {
+    border-bottom: 1px solid rgb(172, 171, 171);
+}
+.table-tr__th {
+    font-size: 20px;
+    padding: 2%;
+}
+.table-tr__td {
+    padding: 2%;
+}
+.date {
+    width: 40%;
+}
+.number {
+    width: 30%;
+}

@@ -76,6 +76,10 @@
                     @else
                     <button type="submit" class="update-submit">変更を保存</button>
                     @endif
+                    <!-- QRコード -->
+                    <a href="{{ route('generateQRCode',['id' => $reservation->id]) }}" class="update-qr"><i class="fa-solid fa-qrcode"></i></a>
+                    <!-- Stripe -->
+                    <a href="{{ route('stripe',['id' => $reservation->id]) }}" class="update-stripe"><i class="fa-brands fa-stripe-s"></i></a>
                 </div>
             </form>
         </div>

@@ -1,0 +1,75 @@
+.update {
+    width: 80%;
+    text-align: center;
+    margin:0 auto;
+    margin-bottom: 5%;
+}
+.update-ttl__top {
+    font-size: 30px;
+}
+.form-table {
+    margin: 0 auto;
+    width: 70%;
+    border: 1px solid #000;
+    background-color: blue;
+}
+.form-table__tr-th {
+    padding: 1%;
+    border-top: 1px solid #000;
+    color: #fff;
+}
+.form-table__tr-td {
+    padding: 1%;
+}
+.line {
+    border-right: 1px solid #000;
+}
+.short {
+    padding: 2%;
+    background-color: blue;
+    color: #fff;
+    border: 1px solid olive;
+    border-radius: 5px;
+}
+.text {
+    width: 80%;
+    padding: 2%;
+    background-color: blue;
+    color: #fff;
+    border: none;
+    border: 1px solid olive;
+    border-radius: 5px;
+}
+.file {
+    color: #fff;
+}
+.submit {
+    margin-top: 4%
+}
+.submit-update {
+    background-color: blue;
+    border: none;
+    color: #fff;
+    border-radius: 7px;
+    padding: 1% 2%;
+    cursor: pointer;
+    box-shadow: 3px 3px rgb(170, 169, 169);
+}
+.submit-update:hover {
+    background-color: rgb(76, 76, 235);
+}
+.submit-update:active {
+    position: relative;
+    top: 3px;
+    left: 3px;
+    box-shadow: none;
+}
+.invalid-feedback {
+    color: yellow;
+}
+
+@media screen and (max-width:980px) {
+    .short {
+        width: 70%;
+    }
+}

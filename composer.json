@@ -1,0 +1,13 @@
+{
+    "require": {
+        "stripe/stripe-php": "^12.4",
+        "omnipay/omnipay": "^3.2",
+        "simplesoftwareio/simple-qrcode": "^4.2",
+        "spatie/laravel-permission": "^5.11"
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    }
+}

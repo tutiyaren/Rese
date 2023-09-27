@@ -4,8 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\DoneController;
+use App\Http\Controllers\QrcodeController;
 use App\Http\Controllers\StateController;
-
+use App\Http\Controllers\StripeController;
+use App\Http\Controllers\RepresentativeController;
+use App\Http\Controllers\AdminController;
 
 
 //topページ(shop-all)
@@ -25,7 +28,7 @@ Route::get('/guest', [StateController::class, 'guest'])->name('guest');
 //ログイン時
 Route::get('/member', [StateController::class, 'member']);
 
-Route::middleware('auth')->group(function () {
+//Route::middleware(['web', 'auth:user'])->group(function () {
     //マイページ
     Route::get('/mypage', [MypageController::class, 'mypage'])->name('mypage');
     Route::delete('/mypage/delete/{id}', [MypageController::class, 'delete'])->name('mypage.delete');
@@ -35,10 +38,40 @@ Route::middleware('auth')->group(function () {
     Route::post('/review/{id}/store', [MypageController::class, 'store']);
     //レビュー送信完了ページ
     Route::get('/send', [DoneController::class, 'send'])->name('send');
-});
+    //QRCode
+    Route::get('/generateQRCode/{id}', [QrcodeController::class, 'generateQrCode'])->name('generateQRCode');
+    //Stripeページ
+    Route::get('/stripe/{id}', [StripeController::class, 'stripe'])->name('stripe');
+    Route::post('/stripe/{id}/checkout', [StripeController::class, 'store'])->name('stripe.checkout');
+    //Stripe完了ページ
+    Route::get('/payment', [StripeController::class, 'payment'])->name('payment');
+//});
+
+//店舗代表者ページ
+//Route::middleware(['web', 'auth:representative'])->group(function () {
+    //店舗代表者トップページ
+    Route::get('/representative/{id}', [RepresentativeController::class, 'representative'])->name('representative');
+    //店舗代表者予約一覧ページ
+    Route::get('/representative/{id}/booking/{shop_id}', [RepresentativeController::class, 'booking'])->name('booking');
+    //店舗代表者更新ページ
+    Route::get('representative/{id}/update/{shop_id}', [RepresentativeController::class, 'update'])->name('update');
+    //店舗代表者更新
+    Route::patch('representative/{id}/update/{shop_id}/refresh', [RepresentativeController::class, 'refresh'])->name('refresh');
+    //店舗情報作成ページ
+    Route::get('representative/{id}/make', [RepresentativeController::class, 'make'])->name('make');
+    //店舗情報作成
+    Route::post('representative/{id}/produce', [RepresentativeController::class, 'produce'])->name('produce');
+//});
+
+//管理者ページ
+//Route::middleware(['web', 'auth:admin'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'admin'])->name('admin');
+    //店舗代表者作成
+    Route::post('/admin/create', [AdminController::class, 'create'])->name('create');
+//});
 
 
-//Route::get('/login', [AuthenticatedSessionController::class, 'login']);
+//Route::get('/login', [AuthenticatedSessionController::class, 'login'])->name('login');
 //Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
 
 

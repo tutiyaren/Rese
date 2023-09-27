@@ -85,25 +85,27 @@
 }
 .update {
     text-align: center;
+    display: flex;
+    justify-content: space-around;
 }
+
 .update-submit {
     cursor: pointer;
     background-color: rgb(60, 60, 247);
     border: none;
     color: rgb(204, 126, 16);
 }
-.update-submit:hover {
-    font-weight: bold;
-    background-color: #fff;
-    border-radius: 8px;
-    padding: 1% 2%;
-}
-.review {
+.update-qr,
+.review,
+.update-stripe {
     text-decoration: none;
     cursor: pointer;
     color: rgb(204, 126, 16);
 }
-.review:hover {
+.review:hover,
+.update-submit:hover,
+.update-qr:hover,
+.update-stripe:hover {
     font-weight: bold;
     background-color: #fff;
     border-radius: 8px;

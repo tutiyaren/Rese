@@ -1,0 +1,57 @@
+.admin {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+.admin__alert--success {
+    background-color: rgb(152, 212, 32);
+    width: 100%;
+    color: #fff;
+    font-weight: bold;
+    padding: 5% 0;
+}
+.admin-ttl {
+    margin-bottom: 10%;
+}
+.admin-inner {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+}
+.label {
+    margin-bottom: 3%;
+    font-size: 20px;
+    cursor: pointer;
+}
+.input {
+    padding: 1%;
+    width: 30%;
+}
+.email {
+    width: 38%;
+}
+.password {
+    width: 35%;
+}
+.submit {
+    margin-top: 5%;
+}
+.submit-create {
+    color: #fff;
+    background-color: rgb(28, 28, 253);
+    border-radius: 7px;
+    border: none;
+    padding: 1% 2%;
+    box-shadow: 4px 4px gray;
+}
+.submit-create:active {
+    position: relative;
+    top: 4px;
+    left: 4px;
+    box-shadow: none;
+}
+

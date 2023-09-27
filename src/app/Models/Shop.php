@@ -10,6 +10,7 @@ class Shop extends Model
     use HasFactory;
 
     protected $fillable = [
+        'representative_id',
         'shop',
         'area',
         'genre',
@@ -36,6 +37,11 @@ class Shop extends Model
     public function reviews()
     {
         return $this->hasMany(Review::class, 'shop_id', 'id');
+    }
+    //representativesとのリレーション
+    public function representative()
+    {
+        return $this->belongsToMany(Representative::class, 'representative_id');
     }
 
     //エリアでの検索

@@ -18,12 +18,13 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     use HasFactory;
+    
 
     protected $fillable = [
         'name',
         'email',
         'password',
-        'user_name'
+        'user_name',
     ];
 
     //shopsとのリレーション

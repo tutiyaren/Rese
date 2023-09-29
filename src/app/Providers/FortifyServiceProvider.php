@@ -13,6 +13,9 @@ use Illuminate\Support\ServiceProvider;
 use Laravel\Fortify\Fortify;
 use Illuminate\Support\Facades\Validator;
 use App\Rules\CustomValidationRule;
+use App\Actions\Fortify\CreateNewAdmin; 
+use App\Actions\Fortify\CreateNewRepresentative;
+use Illuminate\Support\Facades\Route;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -30,6 +33,8 @@ class FortifyServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Fortify::createUsersUsing(CreateNewUser::class);
+        Fortify::createAdminsUsing(CreateNewAdmin::class);
+        Fortify::createRepresentativesUsing(CreateNewRepresentative::class);
 
         Fortify::registerView(function () {
             return view('register');
@@ -49,8 +54,6 @@ class FortifyServiceProvider extends ServiceProvider
 
             return Limit::perMinute(10)->by($email . $request->ip());
         });
-
-        
 
     }
 }

@@ -48,6 +48,12 @@ class User extends Authenticatable
         return $this->hasMany(Review::class, 'user_id', 'id');
     }
 
+    // ユーザーのロールを取得するメソッド
+    public function getRole()
+    {
+        return 'user';
+    }
+
     protected $table = 'users';
 
     /**

@@ -37,6 +37,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
         ],
+        'representatives' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Representative::class,
+        ],
     ],
     
 
@@ -164,14 +168,6 @@ return [
             'confirmPassword' => true,
             //'window' => 0,
         ]),
-        Features::registration() => [
-            'rules' => [
-                'name' => ['required', 'string', 'max:255'],
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-                'password' => ['required', 'string', 'min:8', 'max:255', 'confirmed', new \App\Rules\CustomValidationRule],
-            ],
-            // 他の設定オプション
-        ],
         
     ],
 

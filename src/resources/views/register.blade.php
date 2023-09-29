@@ -17,16 +17,25 @@
             <div class="user-name">
                 <i class="fa-solid fa-user icon"></i>
                 <input type="text" name="name" class="user-name__input" value="{{ old('name') }}" placeholder="Username" required>
+                @error('name')
+                <p class="error">※{{ $message }}</p>
+                @enderror
             </div>
             <!-- メールアドレス -->
             <div class="user-email">
                 <i class="fa-solid fa-envelope icon"></i>
                 <input type="email" name="email" class="user-email__input" value="{{ old('email') }}" placeholder="Email" required>
+                @error('email')
+                <p class="error">※{{ $message }}</p>
+                @enderror
             </div>
             <!-- パスワード -->
             <div class="user-password">
                 <i class="fa-solid fa-lock icon"></i>
                 <input type="password" name="password" class="user-password__input" placeholder="Password" required>
+                @error('password')
+                <p class="error">※{{ $message }}</p>
+                @enderror
             </div>
             <!-- 確認パスワード -->
             <div class="user-password__confirmation">

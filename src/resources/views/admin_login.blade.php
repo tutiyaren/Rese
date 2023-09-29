@@ -1,7 +1,7 @@
 @extends('layouts.index')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/login.css') }}">
+<link rel="stylesheet" href="{{ asset('css/admin_login.css') }}">
 @endsection
 
 @section('content')
@@ -9,9 +9,9 @@
 <!-- ログイン -->
 <div class="login">
     <div class="login-ttl">
-        <h2 class="login-ttl__top">Login</h2>
+        <h2 class="login-ttl__top">管理者Login</h2>
     </div>
-    <form class="login-inner" method="post" action="/login">
+    <form class="login-inner" method="post" action="/admin_login">
         @csrf
         <div class="user">
             <!-- メールアドレス -->

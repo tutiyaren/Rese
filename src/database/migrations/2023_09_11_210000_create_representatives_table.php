@@ -18,7 +18,9 @@ class CreateRepresentativesTable extends Migration
             $table->foreignId('admin_id')->constrained()->cascadeOnDelete();
             $table->string('name', 255)->nullable();
             $table->string('email', 255)->unique()->nullable();
+            $table->timestamp('email_verified_at')->nullable();
             $table->string('password', 255)->nullable();
+            $table->rememberToken();
             $table->timestamp('created_at')->useCurrent()->nullable();
             $table->timestamp('updated_at')->useCurrent()->nullable();
         });

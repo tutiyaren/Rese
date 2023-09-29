@@ -18,6 +18,7 @@ class AdminsTableSeeder extends Seeder
         $param = [
             'name' => 'abc',
             'email' => 'abc@example.com',
+            'email_verified_at' => now(),
             'password' => Hash::make('abcabcabc')
         ];
         DB::table('admins')->insert($param);

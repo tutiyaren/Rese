@@ -7,19 +7,44 @@ use App\Models\Representative;
 use App\Models\Shop;
 use App\Models\Reservation;
 use App\Http\Requests\ShopUpdateRequest;
+use App\Http\Requests\LoginRequest;
+use Illuminate\Support\Facades\Auth;
 
 class RepresentativeController extends Controller
 {
+    public function show()
+    {
+        return view('representative_login');
+    }
+
+    public function login(LoginRequest $request)
+    {
+        $this->validate($request, [
+            'email' => 'required|email', 'password' => 'required',
+        ]);
+
+        $credentials = $request->only(['email', 'password']);
+
+        if (Auth::guard('representatives')->attempt($credentials)) {
+
+            return redirect()->route('representative', ['id' => Auth::guard('representatives')->id()]); // ログインしたらリダイレクト
+
+        }
+
+        return back()->withInput($request->only('email'))
+        ->withErrors([
+            'email' => ['認証情報が記録と一致しません。']
+        ]);
+    }
+
+
     //店舗代表者トップページ
     public function representative($id)
     {
         $representative = Representative::findOrFail($id);
         $shops = $representative->shops;
-        
-        // 特定の店舗情報を取得
-        $shop = Shop::findOrFail($id);
 
-        return view('representative', compact('shops', 'shop', 'representative'));
+        return view('representative', compact('shops', 'representative'));
     }
 
     //店舗代表者予約一覧ページ

@@ -28,7 +28,7 @@ Route::get('/guest', [StateController::class, 'guest'])->name('guest');
 //ログイン時
 Route::get('/member', [StateController::class, 'member']);
 
-//Route::middleware(['web', 'auth:user'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     //マイページ
     Route::get('/mypage', [MypageController::class, 'mypage'])->name('mypage');
     Route::delete('/mypage/delete/{id}', [MypageController::class, 'delete'])->name('mypage.delete');
@@ -45,10 +45,13 @@ Route::get('/member', [StateController::class, 'member']);
     Route::post('/stripe/{id}/checkout', [StripeController::class, 'store'])->name('stripe.checkout');
     //Stripe完了ページ
     Route::get('/payment', [StripeController::class, 'payment'])->name('payment');
-//});
+});
 
+//店舗代表者のログイン
+Route::get('/representative_login', [RepresentativeController::class, 'show'])->name('representative_login');
+Route::post('/representative_login', [RepresentativeController::class, 'login'])->name('login_submit');
 //店舗代表者ページ
-//Route::middleware(['web', 'auth:representative'])->group(function () {
+Route::middleware(['auth:representatives'])->group(function () {
     //店舗代表者トップページ
     Route::get('/representative/{id}', [RepresentativeController::class, 'representative'])->name('representative');
     //店舗代表者予約一覧ページ
@@ -61,14 +64,18 @@ Route::get('/member', [StateController::class, 'member']);
     Route::get('representative/{id}/make', [RepresentativeController::class, 'make'])->name('make');
     //店舗情報作成
     Route::post('representative/{id}/produce', [RepresentativeController::class, 'produce'])->name('produce');
-//});
+});
 
+
+//管理者のログイン
+Route::get('/admin_login', [AdminController::class, 'show'])->name('admin_login');
+Route::post('/admin_login', [AdminController::class, 'login'])->name('login_submit');
 //管理者ページ
-//Route::middleware(['web', 'auth:admin'])->group(function () {
+Route::middleware(['auth:admins'])->group(function () {
     Route::get('/admin', [AdminController::class, 'admin'])->name('admin');
     //店舗代表者作成
     Route::post('/admin/create', [AdminController::class, 'create'])->name('create');
-//});
+});
 
 
 //Route::get('/login', [AuthenticatedSessionController::class, 'login'])->name('login');

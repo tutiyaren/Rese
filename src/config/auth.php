@@ -40,11 +40,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        'admin' => [
+        'admins' => [
             'driver' => 'session',
             'provider' => 'admins',
         ],
-        'representative' => [
+        'representatives' => [
             'driver' => 'session',
             'provider' => 'representatives',
         ],
@@ -108,6 +108,18 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
+        ],
+        'admins' => [                     
+            'provider' => 'admins',       
+            'table' => 'password_resets', 
+            'expire' => 60,               
+            'throttle' => 60,             
+        ],
+        'representatives' => [                     
+            'provider' => 'representatives',       
+            'table' => 'password_resets', 
+            'expire' => 60,               
+            'throttle' => 60,             
         ],
     ],
 

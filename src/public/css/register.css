@@ -68,10 +68,16 @@
 .button-submit:hover {
     opacity: 0.6;
 }
-
+.error {
+    color: red;
+    font-size: 12px;
+}
 @media screen and (max-width:800px) {
     .register {
         width: 50%;
+    }
+    .error {
+        font-size: 8px;
     }
 }
 

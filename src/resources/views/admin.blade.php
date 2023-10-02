@@ -7,6 +7,9 @@
 @section('content')
 
 <div class="admin">
+    <div class="home">
+        <a href="/admin/mail" class="home-link">お知らせメール</a>
+    </div>
     <div class="admin__alert">
         @if(session('message'))
         <div class="admin__alert--success">

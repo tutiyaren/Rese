@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Representative;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\LoginRequest;
-use App\Http\Requests\RegisterRequest;
-use app\Models\Admin;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\UserNotification;
 
 class AdminController extends Controller
 {
@@ -36,6 +36,7 @@ class AdminController extends Controller
             ]);
     }
     
+    //店舗代表者作成
     public function admin()
     {
         return view('admin');
@@ -48,5 +49,22 @@ class AdminController extends Controller
         Representative::create($data);
 
         return redirect('admin')->with('message', '店舗代表者を作成しました');
+    }
+
+    //お知らせメール
+    public function mail()
+    {
+        return view('mail.admin_mail');
+    }
+
+    public function sendUserNotification(Request $request)
+    {
+        $userEmail = $request->input('user_email');
+        $message = $request->input('message');
+
+        // メールを送信
+        Mail::to($userEmail)->send(new UserNotification($message));
+
+        return redirect()->back()->with('message', 'お知らせメールが送信されました');
     }
 }

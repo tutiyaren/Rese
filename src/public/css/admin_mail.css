@@ -1,0 +1,74 @@
+.mail {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+}
+.success {
+    width: 100%;
+    background-color: rgb(6, 212, 13);
+}
+.success-mail {
+    color: #fff;
+    font-size: 18px;
+    padding: 3% 0;
+}
+.home {
+    text-align: right;
+}
+.home-link {
+    text-decoration: none;
+    color: #fff;
+    background-color: blueviolet;
+    padding: 2% 4%;
+    border: none;
+    border-radius: 7px;
+}
+.mail-ttl {
+    margin-top: 8%;
+}
+.mail-ttl__top {
+    font-size: 28px;
+}
+.mail-form {
+    background-color: blue;
+    padding: 5% 0;
+}
+.form-group {
+    color: #fff;
+    margin-top: 5%;
+}
+.form-group__mail,
+.form-group__content {
+    width: 40%;
+    background-color: rgb(63, 63, 247);
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    padding: 2%;
+}
+.form-group__content {
+    width: 70%;
+    height: 250px;
+}
+.submit {
+    margin-top: 9%;
+    margin-bottom: 5%;
+}
+.submit-button {
+    border: none;
+    border-radius: 7px;
+    background-color: rgb(63, 63, 247);
+    color: #fff;
+    padding: 2% 4%;
+    cursor: pointer;
+    box-shadow: 3px 3px rgb(99, 99, 184);
+}
+.submit-button:hover {
+    opacity: 0.7;
+}
+.submit-button:active {
+    position:relative;
+    top: 3px;
+    left: 3px;
+    box-shadow: none;
+}

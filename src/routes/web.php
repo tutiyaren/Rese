@@ -72,9 +72,12 @@ Route::get('/admin_login', [AdminController::class, 'show'])->name('admin_login'
 Route::post('/admin_login', [AdminController::class, 'login'])->name('login_submit');
 //管理者ページ
 Route::middleware(['auth:admins'])->group(function () {
-    Route::get('/admin', [AdminController::class, 'admin'])->name('admin');
     //店舗代表者作成
+    Route::get('/admin', [AdminController::class, 'admin'])->name('admin');
     Route::post('/admin/create', [AdminController::class, 'create'])->name('create');
+    //お知らせメール
+    Route::get('/admin/mail', [AdminController::class, 'mail'])->name('mail');
+    Route::post('/admin.sendnotification', [AdminController::class, 'sendUserNotification']);
 });
 
 

@@ -63,7 +63,9 @@ class AdminController extends Controller
         $message = $request->input('message');
 
         // メールを送信
-        Mail::to($userEmail)->send(new UserNotification($message));
+        Mail::raw($message, function ($mail) use ($userEmail) {
+            $mail->to($userEmail)->from('abc@example.com', 'abc')->subject('お知らせメール');
+        });
 
         return redirect()->back()->with('message', 'お知らせメールが送信されました');
     }

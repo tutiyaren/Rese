@@ -24,12 +24,12 @@
         @csrf
         <div class="form-group">
             <label for="user_email">送信先のメールアドレス</label>
-            <input type="email" name="user_email" class="form-group__mail" required>
+            <input type="email" name="user_email" class="form-group__mail" required value="{{ old('user_email') }}">
         </div>
 
         <div class="form-group">
             <label for="message">内容</label>
-            <textarea name="message" class="form-group__content" required row="20" cols="40"></textarea>
+            <textarea name="message" class="form-group__content" required row="20" cols="40">{{ old('message') }}</textarea>
         </div>
 
         <div class="submit">

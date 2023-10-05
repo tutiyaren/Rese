@@ -33,8 +33,8 @@ class FortifyServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Fortify::createUsersUsing(CreateNewUser::class);
-        Fortify::createAdminsUsing(CreateNewAdmin::class);
-        Fortify::createRepresentativesUsing(CreateNewRepresentative::class);
+        //Fortify::createAdminsUsing(CreateNewAdmin::class);
+        //Fortify::createRepresentativesUsing(CreateNewRepresentative::class);
 
         Fortify::registerView(function () {
             return view('register');

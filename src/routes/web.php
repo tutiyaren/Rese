@@ -27,6 +27,8 @@ Route::get('/thanks', [DoneController::class, 'thanks']);
 Route::get('/guest', [StateController::class, 'guest'])->name('guest');
 //ログイン時
 Route::get('/member', [StateController::class, 'member']);
+//QRCodeデータ表示ページ
+Route::get('/generateQRCode/{id}/indication', [QrcodeController::class, 'indication'])->name('indication');
 
 Route::middleware(['auth'])->group(function () {
     //マイページ
@@ -42,7 +44,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/generateQRCode/{id}', [QrcodeController::class, 'generateQrCode'])->name('generateQRCode');
     //Stripeページ
     Route::get('/stripe/{id}', [StripeController::class, 'stripe'])->name('stripe');
-    Route::post('/stripe/{id}/checkout', [StripeController::class, 'store'])->name('stripe.checkout');
+    Route::post('/stripe/{id}/checkout', [StripeController::class, 'checkout'])->name('stripe.checkout');
     //Stripe完了ページ
     Route::get('/payment', [StripeController::class, 'payment'])->name('payment');
 });
@@ -64,6 +66,8 @@ Route::middleware(['auth:representatives'])->group(function () {
     Route::get('representative/{id}/make', [RepresentativeController::class, 'make'])->name('make');
     //店舗情報作成
     Route::post('representative/{id}/produce', [RepresentativeController::class, 'produce'])->name('produce');
+    //QRCodeデータ表示ページ
+    Route::get('/generateQRCode/{id}/indication', [QrcodeController::class, 'indication'])->name('indication');
 });
 
 

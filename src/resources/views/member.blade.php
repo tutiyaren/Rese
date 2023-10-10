@@ -13,7 +13,9 @@
         @csrf
         <button class="select-button">Logout</button>
     </form>
+    @if(auth()->check())
     <p class="select-move"><a href="/mypage" class="select-mypage">Mypage</a></p>
+    @endif
 </div>
 
 @endsection

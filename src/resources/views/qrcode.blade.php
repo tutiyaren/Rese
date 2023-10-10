@@ -1,7 +1,7 @@
 @extends('layouts.index')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/QRCode.css') }}">
+<link rel="stylesheet" href="{{ asset('css/qrcode.css') }}">
 @endsection
 
 @section('content')
@@ -12,7 +12,7 @@
     </div>
     <!-- QRコード -->
     <div class="QRCode-main">
-        <img src="data:image/png;base64,{{ base64_encode($qrCode) }}" alt="QR Code" />
+        {!! QrCode::size(300)->color(0, 0, 255)->generate('http://localhost/generateQRCode/' . $reservation->id . '/indication'); !!}
     </div>
 </div>
 

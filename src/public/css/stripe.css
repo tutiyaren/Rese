@@ -1,0 +1,40 @@
+.stripe {
+    width: 70%;
+    margin: 0 auto;
+    text-align: center;
+}
+.stripe-form {
+    width: 50%;
+    margin: 0 auto;
+    text-align: left;
+    margin-top: 8%;
+    border: 1px sloid #000;
+    background-color: blue;
+    color: #fff;
+    border-radius: 7px;
+    padding: 4% 6%;
+}
+.stripe-form__inner {
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.email-input {
+    background-color: rgb(74, 74, 243);
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    padding: 2%;
+    width: 70%;
+}
+.submit {
+    background-color: rgb(4, 4, 160);
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    padding: 2% 4%;
+    margin-top: 3%;
+    cursor: pointer;
+}
+.submit:hover {
+    background-color: rgb(102, 102, 231);
+}

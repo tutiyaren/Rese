@@ -1,0 +1,13 @@
+.QRCode {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 6%;
+}
+.QRCode-text {
+    margin-bottom: 5%;
+}
+.QRCode-text__ttl {
+    font-weight: bold;
+    font-size: 18px;
+}

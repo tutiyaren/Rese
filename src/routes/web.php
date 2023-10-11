@@ -64,6 +64,8 @@ Route::middleware(['auth:representatives'])->group(function () {
     Route::get('representative/{id}/make', [RepresentativeController::class, 'make'])->name('make');
     //店舗情報作成
     Route::post('representative/{id}/produce', [RepresentativeController::class, 'produce'])->name('produce');
+    //リマインダー
+    Route::get('representative/{id}/reminder', [RepresentativeController::class, 'reminder'])->name('reminder');
 });
 
 

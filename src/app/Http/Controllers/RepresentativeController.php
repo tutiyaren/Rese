@@ -145,4 +145,22 @@ class RepresentativeController extends Controller
 
         return redirect()->route('representative', ['id' => $id]);
     }
+
+    //リマインダー
+    public function reminder($id)
+    {
+        $representative = Representative::findOrFail($id);
+        $shops = $representative->shops;
+
+        // 本日の予約情報を取得
+        $today = now()->format('Y-m-d');
+        $shopIds = $shops->pluck('id');
+
+        // 本日の予約情報かつ代表者のショップに関連する予約情報を取得
+        $reservations = Reservation::whereIn('shop_id', $shopIds)
+            ->whereDate('date', $today)
+            ->get();
+
+        return view('mail.reminder', compact('representative', 'shops', 'reservations'));
+    }
 }

@@ -66,6 +66,8 @@ Route::middleware(['auth:representatives'])->group(function () {
     Route::post('representative/{id}/produce', [RepresentativeController::class, 'produce'])->name('produce');
     //リマインダー
     Route::get('representative/{id}/reminder', [RepresentativeController::class, 'reminder'])->name('reminder');
+    //QRCodeデータ表示ページ
+    Route::get('/generateQRCode/{id}/indication', [QrcodeController::class, 'indication'])->name('indication');
 });
 
 

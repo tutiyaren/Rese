@@ -9,6 +9,7 @@ use App\Models\Reservation;
 use App\Http\Requests\ShopUpdateRequest;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class RepresentativeController extends Controller
 {
@@ -144,5 +145,16 @@ class RepresentativeController extends Controller
         Shop::create($data);
 
         return redirect()->route('representative', ['id' => $id]);
+    }
+
+    public function reminder($id)
+    {
+        // 今日の日付を取得
+        $today = Carbon::now()->toDateString();
+
+        // 今日の日付に関連する予約情報を取得
+        $reservations = Reservation::whereDate('date', $today)->get();
+
+        return view('reminder', compact('reservations'));
     }
 }

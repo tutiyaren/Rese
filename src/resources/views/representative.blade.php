@@ -33,6 +33,11 @@
                 <a href="{{ route('make', ['id' => $representative->id]) }}" class="card-create__shop">店舗情報作成</a>
             </div>
         </div>
+        <div class="card">
+            <div class="card-create">
+                <a href="{{ route('reminder', ['id' => $representative->id]) }}" class="card-create__shop">リマインダー</a>
+            </div>
+        </div>
     </div>
 </div>
 

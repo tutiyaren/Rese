@@ -13,7 +13,7 @@
 <body>
     <header class="header">
         <div class="header-back">
-            <a href="/" class="header-back__link">✖</a>
+            <a href="{{ url()->previous() }}" class="header-back__link">✖</a>
         </div>
     </header>
 

@@ -27,8 +27,6 @@ Route::get('/thanks', [DoneController::class, 'thanks']);
 Route::get('/guest', [StateController::class, 'guest'])->name('guest');
 //ログイン時
 Route::get('/member', [StateController::class, 'member']);
-//QRCodeデータ表示ページ
-Route::get('/generateQRCode/{id}/indication', [QrcodeController::class, 'indication'])->name('indication');
 
 Route::middleware(['auth'])->group(function () {
     //マイページ
@@ -83,7 +81,7 @@ Route::middleware(['auth:admins'])->group(function () {
     Route::post('/admin/create', [AdminController::class, 'create'])->name('create');
     //お知らせメール
     Route::get('/admin/mail', [AdminController::class, 'mail'])->name('mail');
-    Route::post('/admin.sendnotification', [AdminController::class, 'sendUserNotification']);
+    Route::post('/admin/sendnotification', [AdminController::class, 'sendUserNotification']);
 });
 
 

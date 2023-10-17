@@ -1,6 +1,7 @@
 version: '3.8'
 
 services:
+
     nginx:
         image: nginx:1.21.1
         ports:
@@ -47,9 +48,4 @@ services:
         ports:
             - "8025:8025" 
             - "1025:1025"
-
-    node:
-        image: node:16
-        volumes:
-            - ./src:/var/www/
-    
+            

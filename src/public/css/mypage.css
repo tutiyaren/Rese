@@ -80,7 +80,7 @@
 }
 .message {
     color: yellow;
-    font-size: 3px;
+    font-size: 7px;
     margin-bottom: 3%;
 }
 .update {
@@ -202,7 +202,7 @@
     .detail-see {
         font-size: 12px;
         padding: 3px 8px;
-        line-height: 30%;
+        line-height: 190%;
     }
     .heart-red {
         font-size: 30px;
@@ -215,7 +215,7 @@
     }
     .detail-see {
         font-size: 8px;
-        line-height: 250%;
+        line-height: 310%;
     }
 }
 

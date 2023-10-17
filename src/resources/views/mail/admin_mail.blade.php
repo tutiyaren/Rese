@@ -20,7 +20,7 @@
         <h2 class="mail-ttl__top">お知らせメール送信</h2>
     </div>
 
-    <form class="mail-form" method="POST" action="/admin.sendnotification">
+    <form class="mail-form" method="POST" action="/admin/sendnotification">
         @csrf
         <div class="form-group">
             <label for="user_email">送信先のメールアドレス</label>

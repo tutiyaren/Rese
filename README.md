@@ -3,7 +3,7 @@
 ![スクリーンショット (86)](https://github.com/tutiyaren/Rese/assets/126432220/eb0e59f5-4b3c-4bf5-be54-2af8a8c5e41d)
 
 
-##　作成した目的
+## 作成した目的
 外部の飲食店予約サービスは手数料を取られるので自社で予約サービスを持ちたい。
 
 ## 機能一覧
@@ -31,7 +31,7 @@ Representativeログイン状態
 Adminログイン状態
     店舗代表者の作成、Userへのお知らせメール送信
 
-##　環境構築
+## 環境構築
 - docker-compose.yml
 ![スクリーンショット (89)](https://github.com/tutiyaren/Rese/assets/126432220/d6664349-6ecc-48db-a273-e81d44744b9b)
 Dockerfile

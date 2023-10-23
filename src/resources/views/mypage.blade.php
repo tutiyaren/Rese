@@ -94,7 +94,7 @@
             @foreach($favoriteShops as $favoriteShop)
             <div class="card">
                 <div class="card-top">
-                    <img class="card-top__img" src="{{ asset('storage/' . $favoriteShop->shop->image) }}" alt="お店の画像">
+                    <img class="card-top__img" src="{{ $favoriteShop->shop->image }}" alt="お店の画像">
                 </div>
                 <div class="card-bottom">
                     <div class="shop">

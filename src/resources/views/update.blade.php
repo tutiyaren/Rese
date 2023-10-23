@@ -55,7 +55,7 @@
             </tr>
             <tr class="form-table__tr">
                 <td class="form-table__tr-td" colspan="3">
-                    <img id="shopImage" src="{{ asset('storage/' . $shop->image) }}" alt="{{ basename($shop->image) }}" width=" 60%" height="60%">
+                    <img id="shopImage" src="{{ $shop->image }}" alt="{{ basename($shop->image) }}" width=" 60%" height="60%">
                     <input class="file" type="file" name="image" id="newImageInput">
                     @error('image')
                     <span class="invalid-feedback" role="alert">{{ $message }}</span>

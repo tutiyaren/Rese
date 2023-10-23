@@ -9,7 +9,6 @@ use App\Models\User_Shop_Favorite;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ReservationRequest;
-use App\Models\Review;
 
 class ShopController extends Controller
 {
@@ -39,6 +38,9 @@ class ShopController extends Controller
                 ->exists();
 
             $favoriteExists[$shop->id] = $exists;
+
+            // 画像のフルパスをS3から取得
+            $shop->image = 'https://rese-tuti.s3.ap-northeast-1.amazonaws.com/image/' . $shop->image;
         }
 
         return view('list', compact('shops', 'uniqueAreas', 'uniqueGenres', 'area','genre', 'favoriteExists'));
@@ -75,6 +77,9 @@ class ShopController extends Controller
     {
         //特定の店舗の予約view
         $shop = Shop::findOrFail($id);
+
+        // 画像のフルパスをS3から取得
+        $shop->image = 'https://rese-tuti.s3.ap-northeast-1.amazonaws.com/image/' . $shop->image;
 
         //予約時間選択肢
         $now = Carbon::now();

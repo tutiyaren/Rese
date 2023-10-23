@@ -39,6 +39,11 @@ class MypageController extends Controller
             $numbers[] = $i;
         }
 
+        // お気に入り店舗の画像のフルパスをS3から取得
+        foreach ($favoriteShops as $favoriteShop) {
+            $favoriteShop->shop->image = 'https://rese-tuti.s3.ap-northeast-1.amazonaws.com/image/' . $favoriteShop->shop->image;
+        }
+
         return view('mypage', compact('reservations', 'favoriteShops', 'futureTimes', 'numbers', 'now'));
     }
     //予約消去POST
@@ -78,6 +83,9 @@ class MypageController extends Controller
     {
         //特定の店舗の予約view
         $shop = Shop::findOrFail($id);
+
+        // 画像のフルパスをS3から取得
+        $shop->image = 'https://rese-tuti.s3.ap-northeast-1.amazonaws.com/image/' . $shop->image;
 
         return view('review', compact('shop'));
     }

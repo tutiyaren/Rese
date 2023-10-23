@@ -34,8 +34,8 @@ Adminログイン状態
 ## 環境構築
 - docker-compose.yml
 ![スクリーンショット (89)](https://github.com/tutiyaren/Rese/assets/126432220/d6664349-6ecc-48db-a273-e81d44744b9b)
-Dockerfile
-- ![スクリーンショット (91)](https://github.com/tutiyaren/Rese/assets/126432220/b05964f5-7fea-47ce-9c19-82d73ef16d3e)
+- Dockerfile
+![スクリーンショット (91)](https://github.com/tutiyaren/Rese/assets/126432220/b05964f5-7fea-47ce-9c19-82d73ef16d3e)
 
 - Fortifyインストール
 $ composer require laravel/fortify

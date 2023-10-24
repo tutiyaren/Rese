@@ -11,7 +11,7 @@
     <div class="login-ttl">
         <h2 class="login-ttl__top">管理者Login</h2>
     </div>
-    <form class="login-inner" method="post" action="/admin_login">
+    <form class="login-inner" method="post" action="{{ route('admin_login_submit') }}}">
         @csrf
         <div class="user">
             <!-- メールアドレス -->

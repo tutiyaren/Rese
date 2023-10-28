@@ -50,6 +50,9 @@ JavaScriptを使用したが次回動かした際にうまく起動しない場�
 - QRCodeインストール
 $ composer require simplesoftwareio/simple-qrcode
 
+- AWSへのデプロイの参考記事
+[S3](https://qiita.com/kouki_o9/items/dcc40b30924fd3b30787)
+[EC2 RDS](https://zenn.dev/funayamateppei/articles/d3ee340a2dc7c1)
 
 
 

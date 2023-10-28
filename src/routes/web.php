@@ -73,7 +73,7 @@ Route::middleware(['auth:representatives'])->group(function () {
 
 //管理者のログイン
 Route::get('/admin_login', [AdminController::class, 'show'])->name('admin_login');
-Route::post('/admin_login', [AdminController::class, 'login'])->name('admin_login_submit');
+Route::post('/admin_login_submit', [AdminController::class, 'login'])->name('admin_login_submit');
 //管理者ページ
 Route::middleware(['auth:admins'])->group(function () {
     //店舗代表者作成

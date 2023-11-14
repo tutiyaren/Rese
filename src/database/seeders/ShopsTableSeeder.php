@@ -47,7 +47,9 @@ class ShopsTableSeeder extends Seeder
             'area' => '東京都',
             'genre' => 'イタリアン',
             'content' => '都心にひっそりとたたずむ、古民家を改築した落ち着いた空間です。イタリアで修業を重ねたシェフによるモダンなイタリア料理とソムリエセレクトによる厳選ワインとのペアリングが好評です。ゆっくりと上質な時間をお楽しみください。',
-            'image' =>'itarian.png'
+
+            'image' => 'itarian.png'
+
         ];
         DB::table('shops')->insert($param);
         $param = [
@@ -56,7 +58,8 @@ class ShopsTableSeeder extends Seeder
             'area' => '福岡県',
             'genre' => 'ラーメン',
             'content' => 'ラーメン屋とは思えない店内にはカウンター席はもちろん、個室も用意してあります。ラーメンはこってり系・あっさり系ともに揃っています。その他豊富な一品料理やアルコールも用意しており、居酒屋としても利用できます。ぜひご来店をお待ちしております。',
-            'image' =>'ra-men.png'
+            'image' => 'ra-men.png' 
+
         ];
         DB::table('shops')->insert($param);
         $param = [
@@ -74,7 +77,7 @@ class ShopsTableSeeder extends Seeder
             'area' => '大阪府',
             'genre' => 'イタリアン',
             'content' => 'イタリア製ピザ窯芳ばしく焼き上げた極薄のミラノピッツァや厳選されたワインをお楽しみいただけます。女子会や男子会、記念日やお誕生日会にもオススメです。',
-            'image' =>'itarian.png'
+            'image' => 'itarian.png'
         ];
         DB::table('shops')->insert($param);
         $param = [
@@ -83,7 +86,7 @@ class ShopsTableSeeder extends Seeder
             'area' => '東京都',
             'genre' => 'ラーメン',
             'content' => '一杯、一杯心を込めて職人が作っております。味付けは少し濃いめです。 食べやすく最後の一滴まで美味しく飲めると好評です。',
-            'image' =>'ra-men.png'
+            'image' => 'ra-men.png'
         ];
         DB::table('shops')->insert($param);
         $param = [
@@ -146,7 +149,7 @@ class ShopsTableSeeder extends Seeder
             'area' => '東京都',
             'genre' => 'ラーメン',
             'content' => 'お昼にはランチを求められるサラリーマン、夕方から夜にかけては、学生や会社帰りのサラリーマン、小上がり席もありファミリー層にも大人気です。',
-            'image' =>'ra-men.png'
+            'image' => 'ra-men.png'
         ];
         DB::table('shops')->insert($param);
         $param = [
@@ -182,7 +185,7 @@ class ShopsTableSeeder extends Seeder
             'area' => '福岡県',
             'genre' => 'イタリアン',
             'content' => '非日常的な空間で日頃の疲れを癒し、ゆったりとした上質な時間を過ごせる大人の為のレストラン&バーです。',
-            'image' =>'itarian.png'
+            'image' => 'itarian.png'
         ];
         DB::table('shops')->insert($param);
         $param = [

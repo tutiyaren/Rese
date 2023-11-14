@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\UserNotification;
+use App\Models\Shop;
+use App\Models\Voice;
 
 class AdminController extends Controller
 {
@@ -68,5 +70,36 @@ class AdminController extends Controller
         });
 
         return redirect()->back()->with('message', 'お知らせメールが送信されました');
+    }
+
+    // 店舗一覧ページ
+    public function chart()
+    {
+        $shops = Shop::all();
+
+        return view('admin_chart', (compact('shops')));
+    }
+
+    // 店舗詳細
+    public function store($id)
+    {
+        //特定の店舗の予約view
+        $shop = Shop::findOrFail($id);
+
+        $userId = Auth::id();
+
+        // 他のユーザーの口コミを取得
+        $otherUserReviews = Voice::where('shop_id', $shop->id)->get();
+
+        return view('admin_store', compact('shop', 'otherUserReviews'));
+    }
+
+    // 店舗ごとの口コミ消去
+    public function erase($id, Request $request )
+    {
+        $voice = Voice::find($id); // 口コミを特定
+        $voice->delete(); // 口コミを削除
+
+        return redirect()->back()->with('message', '削除しました');
     }
 }

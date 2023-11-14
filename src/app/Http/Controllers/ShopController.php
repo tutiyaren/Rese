@@ -9,6 +9,7 @@ use App\Models\User_Shop_Favorite;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ReservationRequest;
+use App\Models\Voice;
 
 class ShopController extends Controller
 {
@@ -25,6 +26,23 @@ class ShopController extends Controller
         $query->genre($genre);
 
         $shops = $query->get();
+
+        // ソート
+        if ($request->has('sort_by')) {
+            $sortType = $request->input('sort_by');
+
+            if ($sortType === 'random') {
+                $shops = $shops->shuffle();
+            } elseif ($sortType === 'high-rating') {
+                $shops = $shops->sortByDesc(function ($shop) {
+                    return $shop->voices->avg('rating') ?? 0;
+                });
+            } elseif ($sortType === 'low-rating') {
+                $shops = $shops->sortBy(function ($shop) {
+                    return $shop->voices->avg('rating') ?? 0;
+                });
+            }
+        }
 
         //重複無しのエリアとジャンルの選択肢
         $uniqueAreas = Shop::distinct()->pluck('area');
@@ -71,12 +89,23 @@ class ShopController extends Controller
         return redirect()->back();
     }
 
-
     //飲食店詳細GET
     public function detail($id)
     {
         //特定の店舗の予約view
         $shop = Shop::findOrFail($id);
+        
+        $userId = Auth::id();
+
+        // ログインしているユーザーの該当店舗の口コミを取得
+        $userReviews = Voice::where('shop_id', $shop->id)
+        ->where('user_id', $userId)
+        ->get();
+
+        // 他のユーザーの口コミを取得
+        $otherUserReviews = Voice::where('shop_id', $shop->id)
+        ->where('user_id', '!=', $userId)
+        ->get();
 
         // 画像のフルパスをS3から取得
         $shop->image = 'https://rese-tuti.s3.ap-northeast-1.amazonaws.com/image/' . $shop->image;
@@ -97,7 +126,18 @@ class ShopController extends Controller
             $numbers[] = $i;
         }
 
-        return view('detail', compact('shop', 'now', 'futureTimes', 'numbers'));
+        return view('detail', compact('shop', 'userReviews', 'now', 'futureTimes','numbers', 'otherUserReviews'));
+    }
+
+    // 口コミ削除
+    public function delete($voice_id)
+    {
+        $review = Voice::find($voice_id);
+
+        if ($review) {
+            $review->delete();
+        }
+        return redirect()->back();
     }
 
     //飲食店詳細の予約フォームPOST

@@ -38,6 +38,11 @@ class Shop extends Model
     {
         return $this->hasMany(Review::class, 'shop_id', 'id');
     }
+    //voicesとのリレーション
+    public function voices()
+    {
+        return $this->hasMany(Voice::class, 'shop_id', 'id');
+    }
     //representativesとのリレーション
     public function representative()
     {

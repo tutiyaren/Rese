@@ -25,6 +25,94 @@
             <span class="text-area">#{{ $shop->area }}</span><span class="text-genre">#{{ $shop->genre }}</span>
             <p class="text-content">{{ $shop->content }}</p>
         </div>
+
+        <!-- 口コミ -->
+        <div class="voice">
+            @if ($userReviews->isEmpty())
+            <a href="{{ route('voice', ['id' => $shop->id]) }}" class="voice-link">口コミを投稿する</a>
+            @endif
+        </div>
+
+        <div class="all">
+            <p class="all-voice">全ての口コミ情報</p>
+        </div>
+        <div class="cards">
+            @if($userReviews->isNotEmpty())
+            <div class="card">
+                <!-- 自身の口コミ -->
+                <div class="card-menu">
+                    <div class="card-menu__update">
+                        <a href="{{ route('change', ['shop_id' => $userReviews[0]->shop_id, 'id' => $userReviews[0]->id]) }}" class="card-menu__update-button">口コミを編集</a>
+                    </div>
+                    <form action="{{ route('delete', ['voice' => $userReviews[0]->id]) }}" method="post" class="card-menu__delete">
+                        @method('DELETE')
+                        @csrf
+                        <button class="card-menu__delete-button">口コミを削除</button>
+                    </form>
+                </div>
+                <!-- 口コミ内容 -->
+                <div class="card-inner">
+                    <div class="card-inner__review">
+                        <p class="star-top">{{ $userReviews[0]->ratingComment() }}</p>
+                        <!-- 星マーク -->
+                        <div class="star-rating">
+                            @for($i = 5; $i >= 1; $i--)
+                            <input type="radio" id="star{{ $i }}" name="rating" value="{{ $i }}" @if($userReviews[0]->rating == $i) checked @endif>
+                            <label for="star{{ $i }}" style="color: @if($userReviews[0]->rating >= $i) yellow @endif;">
+                                <i class="fa-solid fa-star"></i>
+                            </label>
+                            @endfor
+                        </div>
+                        <!-- レビュー内容 -->
+                        <p class="star-text">{{ $userReviews[0]->comment }}</p>
+                        <!-- 写真・画像 -->
+                        @if($userReviews[0]->image)
+                        @if(file_exists(public_path('storage/public/images/' . $userReviews[0]->image)))
+                        <!-- storage/public/imagesに画像が存在する場合 -->
+                        <img class="voice-image" src="{{ asset('storage/public/images/' . $userReviews[0]->image) }}" alt="写真" width="80%">
+                        @endif
+                        @if(file_exists(public_path('storage/' . $userReviews[0]->image)))
+                        <!-- storageに画像が存在する場合 -->
+                        <img class="voice-image" src="{{ asset('storage/' . $userReviews[0]->image) }}" alt="写真" width="80%">
+                        @endif
+                        @endif
+                    </div>
+                </div>
+            </div>
+            @endif
+            @foreach($otherUserReviews as $review)
+            <div class="card">
+                <!-- 口コミ内容 -->
+                <div class="card-inner">
+                    <div class="card-inner__review">
+                        <p class="star-top">{{ $review->ratingComment() }}</p>
+                        <!-- 星マーク -->
+                        <div class="star-rating">
+                            @for($i = 5; $i >= 1; $i--)
+                            <input type="radio" id="star{{ $i }}" name="rating" value="{{ $i }}" @if($review->rating == $i) checked @endif>
+                            <label for="star{{ $i }}" style="color: @if($review->rating >= $i) yellow @endif;">
+                                <i class="fa-solid fa-star"></i>
+                            </label>
+                            @endfor
+                        </div>
+                        <!-- レビュー内容 -->
+                        <p class="star-text">{{ $review->comment }}</p>
+                        <!-- 写真・画像 -->
+                        @if($review->image)
+                        @if(file_exists(public_path('storage/public/images/' . $review->image)))
+                        <!-- storage/public/imagesに画像が存在する場合 -->
+                        <img class="voice-image" src="{{ asset('storage/public/images/' . $review->image) }}" alt="写真" width="80%">
+                        @endif
+                        @if(file_exists(public_path('storage/' . $review->image)))
+                        <!-- storageに画像が存在する場合 -->
+                        <img class="voice-image" src="{{ asset('storage/' . $review->image) }}" alt="写真" width="80%">
+                        @endif
+                        @endif
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
     </article>
     <!-- 予約 -->
     <article class="detail-reservation">

@@ -9,6 +9,8 @@ use App\Http\Controllers\StateController;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\RepresentativeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\VoiceController;
+use App\Http\Controllers\ImportController;
 
 
 //topページ(shop-all)
@@ -30,7 +32,18 @@ Route::get('/member', [StateController::class, 'member']);
 //QRCodeデータ表示ページ
 Route::get('/generateQRCode/{id}/indication', [QrcodeController::class, 'indication'])->name('indication');
 
+
 Route::middleware(['auth'])->group(function () {
+    // 口コミページ
+    Route::get('/voice/{id}', [VoiceController::class, 'voice'])->name('voice');
+    // 口コミ送信ページ
+    Route::post('/voice/{id}/messenger', [VoiceController::class, 'messenger'])->name('messenger');
+    // 口コミ編集ページ
+    Route::get('/voice/{shop_id}/change/{id}', [VoiceController::class, 'change'])->name('change');
+    // 口コミ編集
+    Route::patch('renewal/{shop_id}/{id}', [VoiceController::class, 'renewal'])->name('voice.renewal');
+    // 口コミ削除
+    Route::delete('/detail/{voice}/delete', [ShopController::class, 'delete'])->name('delete');
     //マイページ
     Route::get('/mypage', [MypageController::class, 'mypage'])->name('mypage');
     Route::delete('/mypage/delete/{id}', [MypageController::class, 'delete'])->name('mypage.delete');
@@ -73,7 +86,7 @@ Route::middleware(['auth:representatives'])->group(function () {
 
 //管理者のログイン
 Route::get('/admin_login', [AdminController::class, 'show'])->name('admin_login');
-Route::post('/admin_login_submit', [AdminController::class, 'login'])->name('admin_login_submit');
+Route::post('/admin_login', [AdminController::class, 'login'])->name('admin_login_submit');
 //管理者ページ
 Route::middleware(['auth:admins'])->group(function () {
     //店舗代表者作成
@@ -81,7 +94,14 @@ Route::middleware(['auth:admins'])->group(function () {
     Route::post('/admin/create', [AdminController::class, 'create'])->name('create');
     //お知らせメール
     Route::get('/admin/mail', [AdminController::class, 'mail'])->name('mail');
-    Route::post('/admin/sendnotification', [AdminController::class, 'sendUserNotification']);
+    Route::post('/admin.sendnotification', [AdminController::class, 'sendUserNotification']);
+    // 店舗一覧
+    Route::get('/admin/chart', [AdminController::class, 'chart'])->name('chart');
+    // 店舗詳細
+    Route::get('/admin/store/{id}', [AdminController::class, 'store'])->name('store');
+    // 店舗ごとの口コミ消去
+    Route::delete('erase/{id}/{shop_id}', [AdminController::class, 'erase'])->name('erase');
+    Route::post('/admin/import', [ImportController::class, 'import'])->name('import');
 });
 
 

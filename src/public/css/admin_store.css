@@ -1,0 +1,142 @@
+.store {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+}
+.detaii-shop {
+    width: 50%;
+}
+.kind-name {
+    font-weight: bold;
+    font-size: 24px;
+}
+.kind-back {
+    text-decoration: none;
+    background-color: #fff;
+    color: #000;
+    border: none;
+    box-shadow: 1px 1px 2px gray;
+    border-radius: 7px;
+    padding: 0px 6px;
+    margin-right: 2%;
+}
+.kind-back:hover {
+    background-color: #f1c9c9;
+}
+.img-shop {
+    width: 60%;
+}
+.text {
+    width: 60%;
+    margin-top: 3%;
+}
+.text-area {
+    margin-right: 2%;
+}
+.text-content {
+    margin-top: 5%;
+}
+.chart {
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 15%;
+}
+.chart-link {
+    text-decoration: none;
+    border: 3px solid blue;
+    border-radius: 50%;
+    padding: 3% 5%;
+    color: blue;
+    font-weight: bold;
+}
+.chart-link:hover {
+    border: none;
+    background-color: blue;
+    color: #fff;
+}
+.item {
+    width: 80%;
+}
+.success {
+    background-color:rgb(142, 142, 248);
+    border: none;
+    color: #474747;
+    text-align: center;
+}
+.all {
+    width: 100%;
+}
+.all-voice {
+    background-color: rgb(86, 86, 246);
+    text-align: center;
+    color: #fff;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+.cards {
+    margin-bottom: 15%;
+    max-height: 600px;
+    overflow-y: auto;
+}
+.card {
+    border-top: 1px solid gray;
+    width: 100%;
+    padding-top: 1%;
+}
+.card-menu {
+    text-align: right;
+    margin-right: 5%;
+}
+.card-menu__delete-button {
+    border: none;
+    background-color: rgb(226, 225, 225);
+    padding-bottom: 0;
+    font-size: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid gray;
+    text-align: right;
+}
+.star-rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+.star-rating input[type="radio"] {
+    display: none;
+}
+.star-rating label {
+    font-size: 24px;
+    color: #ccc;
+    position: relative;
+    padding: 0 5px;
+}
+.voice-image {
+    margin-bottom: 4%;
+}
+
+@media screen and (max-width:680px) {
+    .store {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    .text {
+        margin: 0 auto;
+    }
+    .item {
+        text-align: center;
+        margin: auto;
+    }
+    .voice {
+        margin-bottom: 2%;
+    }
+    .star-rating {
+        margin-left: 29%;
+    }
+}
+@media screen and (max-width:540px) {
+    .star-rating {
+        margin-left: 21%;
+    }
+}

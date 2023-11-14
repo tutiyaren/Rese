@@ -5,9 +5,23 @@
 @endsection
 
 @section('search')
+<div class="sort">
+    <!-- ソート機能 -->
+    <form action="{{ route('list') }}" method="get" class="sort-form">
+        @csrf
+        <label for="sort_by" class="sort-form__label">並び替え：</label>
+        <select class="sort-form__select" name="sort_by" id="sort_by" onchange="this.form.submit()">
+            <option value="" selected disabled hidden>評価高/低</option>
+            <option value="random">ランダム</option>
+            <option value="high-rating">評価が高い順</option>
+            <option value="low-rating">評価が低い順</option>
+        </select>
+    </form>
+</div>
 <!-- header-right -->
 <div class="squeeze">
     <form action="{{ route('list') }}" method="get" class="squeeze-form">
+        @csrf
         <!-- エリア検索 -->
         <select name="area" id="area" class="squeeze-area">
             <option value="All area">All area</option>

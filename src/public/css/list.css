@@ -1,3 +1,18 @@
+.sort {
+    margin-top: 4%;
+}
+.sort-form {
+    display: flex;
+    width: 120%;
+    border: none;
+    background-color: #fff;
+    padding: 2% 3%;
+    margin-right: 15%;
+}
+.sort-form__select {
+    border: none;
+    cursor: pointer;
+}
 .squeeze-form {
     display: flex;
     margin-top: 7%;
@@ -113,29 +128,54 @@
     font-size: 35px;
 }
 
+@media screen and (max-width:1030px) {
+    .sort {
+        margin-top: 5%;
+    }
+    .sort-form {
+        width: 110%;
+    }
+}
+@media screen and (max-width:1030px) {
+    .sort-form {
+        width: 90%;
+    }
+}
 @media screen and (max-width:810px) {
+    .sort-form {
+        width: 95%;
+    }
+    .squeeze {
+        width: 60%;
+    }
     .card {
         width: 31%;
     }
-
     .detail-see {
         font-size: 12px;
         line-height: 230%;
     }
-
-    
 }
-
 @media screen and (max-width:700px) {
-
+    .sort-form {
+        width: 90%;
+    }
+    .sort-form__label,
+    .sort-form__select {
+        font-size: 12px;
+    }
     .squeeze-area,
     .squeeze-genre {
-        width: 35%;
+        width: 30%;
         font-size: 7px;
     }
 }
 
 @media screen and (max-width:550px) {
+    .sort-form__label,
+    .sort-form__select {
+        font-size: 7px;
+    }
     .card {
         width: 48%;
     }

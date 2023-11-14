@@ -4,8 +4,10 @@
     text-align: center;
 }
 .home {
-    text-align: right;
+    display: flex;
+    justify-content: space-around;
     width: 75%;
+    margin: 0 auto;
 }
 .home-link {
     text-decoration: none;
@@ -23,7 +25,7 @@
     padding: 5% 0;
 }
 .admin-ttl {
-    margin-bottom: 10%;
+    margin-bottom: 5%;
 }
 .admin-inner {
     width: 100%;
@@ -50,7 +52,7 @@
     width: 35%;
 }
 .submit {
-    margin-top: 5%;
+    margin-top: 1%;
 }
 .submit-create {
     color: #fff;
@@ -65,5 +67,21 @@
     top: 4px;
     left: 4px;
     box-shadow: none;
+}
+.shop-ttl {
+    margin-top: 5%;
+    margin-bottom: 2%;
+}
+.form-group {
+    display:flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+.shop-inner {
+    margin-bottom: 8%;
+}
+.none {
+    list-style: none;
+    color: red;;
 }
 

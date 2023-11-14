@@ -49,6 +49,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Review::class, 'user_id', 'id');
     }
+    //voicesとのリレーション
+    public function voice()
+    {
+        return $this->hasMany(Voice::class, 'user_id', 'id');
+    }
 
     // ユーザーのロールを取得するメソッド
     public function getRole()

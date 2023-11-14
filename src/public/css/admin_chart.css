@@ -1,0 +1,23 @@
+.chart {
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 5%;
+    max-height: 600px;
+    overflow-y: auto;
+}
+.chart-list {
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 15%;
+}
+.chart-list__tr {
+    border-bottom: 1px solid rgb(141, 141, 184);
+}
+.chart-list__tr-th {
+    font-size: 20px;
+}
+.chart-list__tr-td {
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 2%; 
+}

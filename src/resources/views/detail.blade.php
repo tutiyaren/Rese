@@ -13,7 +13,7 @@
             <p class="kind-name"><a href="{{ url()->previous() }}" class="kind-back">&lt;</a>{{ $shop->shop }}</p>
         </div>
         <div class="img">
-            <img src="{{ asset('storage/' . $shop->image) }}" alt="お店の画像" class="img-shop" id="shop-image">
+            <img src="{{ $shop->image }}" alt="お店の画像" class="img-shop" id="shop-image">
         </div>
         <form action="/detail/{{ $shop->id }}/uploadImage" method="post" enctype="multipart/form-data" id="upload-form" style="display: none;">
             @csrf

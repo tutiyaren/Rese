@@ -56,6 +56,9 @@ class ShopController extends Controller
                 ->exists();
 
             $favoriteExists[$shop->id] = $exists;
+
+            // 画像のフルパスをS3から取得
+            $shop->image = 'https://rese-tuti.s3.ap-northeast-1.amazonaws.com/image/' . $shop->image;
         }
 
         return view('list', compact('shops', 'uniqueAreas', 'uniqueGenres', 'area','genre', 'favoriteExists'));
@@ -103,6 +106,9 @@ class ShopController extends Controller
         $otherUserReviews = Voice::where('shop_id', $shop->id)
         ->where('user_id', '!=', $userId)
         ->get();
+
+        // 画像のフルパスをS3から取得
+        $shop->image = 'https://rese-tuti.s3.ap-northeast-1.amazonaws.com/image/' . $shop->image;
 
         //予約時間選択肢
         $now = Carbon::now();

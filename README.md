@@ -61,6 +61,7 @@ $ composer require simplesoftwareio/simple-qrcode
 [S3](https://qiita.com/kouki_o9/items/dcc40b30924fd3b30787)
 [EC2 RDS](https://zenn.dev/funayamateppei/articles/d3ee340a2dc7c1)
 
+
 ## 管理者インポートの記述方法
 [Googleスプレッドシート](https://docs.google.com/spreadsheets/d/1UuHblgtPgbdK6vqYVNDtK_NIDWbRukl9h_nzHslVu3Y/edit?usp=sharing)
 上記Googleスプレッドシートに必要事項を入力してください。

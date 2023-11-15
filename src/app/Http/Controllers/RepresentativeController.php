@@ -9,6 +9,9 @@ use App\Models\Reservation;
 use App\Http\Requests\ShopUpdateRequest;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
+use Aws\S3\S3Client;
 
 class RepresentativeController extends Controller
 {
@@ -44,6 +47,12 @@ class RepresentativeController extends Controller
         $representative = Representative::findOrFail($id);
         $shops = $representative->shops;
 
+        // 店舗の画像のフルパスをS3から取得
+        foreach ($shops as $shop) {
+            $shop->image = 'https://rese-tuti.s3.ap-northeast-1.amazonaws.com/image/' . $shop->image;
+        }
+
+
         return view('representative', compact('shops', 'representative'));
     }
 
@@ -77,6 +86,9 @@ class RepresentativeController extends Controller
         // 店名を新しい変数に代入
         $shop_name = $shop->shop;
 
+        // 画像のフルパスをS3から取得
+        $shop->image = 'https://rese-tuti.s3.ap-northeast-1.amazonaws.com/image/' . $shop->image;
+
         return view('update', compact('shops', 'shop','shop_name', 'representative'));
     }
 
@@ -89,26 +101,40 @@ class RepresentativeController extends Controller
         // 特定の店舗情報を取得
         $shop = Shop::findOrFail($shop_id);
 
+        // 画像がアップロードされた場合
+        if ($request->hasFile('image')) {
+            $uploadedImage = $request->file('image');
+            $imageName = time() . '_' . $uploadedImage->getClientOriginalName();
+            $folder = 'image/' . $imageName;
+
+            $s3 = new S3Client([
+                'region' => config('filesystems.disks.s3.region'),
+                'version' => 'latest',
+                'credentials' => [
+                    'key' => config('filesystems.disks.s3.key'),
+                    'secret' => config('filesystems.disks.s3.secret'),
+                ],
+            ]);
+
+            $s3->putObject([
+                'Bucket' => config('filesystems.disks.s3.bucket'),
+                'Key' => $folder,
+                'SourceFile' => $uploadedImage->getRealPath(),
+                'ACL' => 'public-read', // この設定によりファイルが公開状態になります
+            ]);
+
+            // 画像ファイル名をデータに追加
+            $data['image'] = $imageName;
+        }
+
         // 更新処理
         $shop->update([
             'shop' => $data['shop'],
             'area' => $data['area'],
             'genre' => $data['genre'],
             'content' => $data['content'],
+            'image' => $data['image'], // 画像ファイル名を更新
         ]);
-
-        if ($request->hasFile('image')) {
-            $uploadedImage = $request->file('image');
-
-            // ファイル名を取得
-            $fileName = $uploadedImage->getClientOriginalName();
-
-            // 画像を保存ディレクトリに移動
-            $imagePath = $uploadedImage->storeAs('public/images', $fileName);
-
-            // データベースにファイル名を保存
-            $shop->update(['image' => $fileName]);
-        }
 
         return redirect()->route('representative', ['id' => $id]);
     }
@@ -130,12 +156,25 @@ class RepresentativeController extends Controller
         $data['representative_id'] = $id;
 
         if ($request->hasFile('image')) {
-            // アップロードされた画像ファイル名を取得
             $uploadedImage = $request->file('image');
-            $imageName = $uploadedImage->getClientOriginalName();
+            $imageName = time() . '_' . $uploadedImage->getClientOriginalName();
+            $folder = 'image/' . $imageName;
 
-            // 画像を保存ディレクトリに移動
-            $uploadedImage->storeAs('public/images', $imageName);
+            $s3 = new S3Client([
+                'region' => config('filesystems.disks.s3.region'),
+                'version' => 'latest',
+                'credentials' => [
+                    'key'    => config('filesystems.disks.s3.key'),
+                    'secret' => config('filesystems.disks.s3.secret'),
+                ],
+            ]);
+
+            $s3->putObject([
+                'Bucket' => config('filesystems.disks.s3.bucket'),
+                'Key'    => $folder,
+                'SourceFile' => $uploadedImage->getRealPath(),
+                'ACL'    => 'public-read', 
+            ]);
 
             // 画像ファイル名をデータに追加
             $data['image'] = $imageName;
@@ -144,5 +183,16 @@ class RepresentativeController extends Controller
         Shop::create($data);
 
         return redirect()->route('representative', ['id' => $id]);
+    }
+
+    public function reminder($id)
+    {
+        // 今日の日付を取得
+        $today = Carbon::now()->toDateString();
+
+        // 今日の日付に関連する予約情報を取得
+        $reservations = Reservation::whereDate('date', $today)->get();
+
+        return view('reminder', compact('reservations'));
     }
 }

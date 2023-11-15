@@ -11,7 +11,7 @@
         @foreach($shops as $shop)
         <div class="card">
             <div class="card-top">
-                <img class="card-top__img" src="{{ asset('storage/' . $shop->image) }}" alt="お店の画像">
+                <img class="card-top__img" src="{{ $shop->image }}" alt="お店の画像">
             </div>
             <div class="card-bottom">
                 <div class="shop">
@@ -31,6 +31,11 @@
         <div class="card">
             <div class="card-create">
                 <a href="{{ route('make', ['id' => $representative->id]) }}" class="card-create__shop">店舗情報作成</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-create">
+                <a href="{{ route('reminder', ['id' => $representative->id]) }}" class="card-create__shop">リマインダー</a>
             </div>
         </div>
     </div>

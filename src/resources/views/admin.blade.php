@@ -44,7 +44,7 @@
     </div>
 
     <!-- 店舗情報作成 -->
-    <div class="admin__alert">
+    <div class="admin__alert csv">
         @if(session('success'))
         <div class="admin__alert--success">
             {{ session('success') }}
